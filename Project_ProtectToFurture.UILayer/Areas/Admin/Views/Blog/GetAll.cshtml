@@ -1,0 +1,36 @@
+﻿@model List<BlogListDto>
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int sayac = 0;
+}
+
+<h1>Proje Listesi</h1>
+
+<table class="table  table-bordered">
+    <tr>
+        <th>No</th>
+        <th>Başlık</th>
+        <th>Açıklama</th>
+        <th>Rapor Görüntüle</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detay</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        sayac++;
+        <tr>
+            <td>@sayac</td>
+            <td>@item.Title</td>
+            <td>@item.Description.Substring(0,50)</td>
+            <td><a href="@item.ImageUrl" class="btn btn-warning " target="_blank">Rapor</a> </td>
+            <td><a href="/Admin/Blog/BlogDelete/@item.BlogId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Admin/Blog/BlogUpdate/@item.BlogId" class="btn btn-success">Guncelle</a></td>
+            <td><a href="/Admin/Blog/GetById/@item.BlogId" class="btn btn-success">Detay</a></td>
+        </tr>
+
+    }
+
+</table>
+<a href="/Admin/Blog/BlogAdd" class="btn btn-primary">Blog Ekle</a>

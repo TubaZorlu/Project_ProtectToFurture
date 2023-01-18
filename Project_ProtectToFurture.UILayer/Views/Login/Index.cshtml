@@ -1,0 +1,74 @@
+﻿@model UserLoginDto
+@{
+    Layout = null;
+}
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>Snow Login form Responsive Widget Template : W3Layouts</title>
+
+	<!-- Meta tags -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<!-- Style -->
+	<link rel="stylesheet" href="~/Login/css/style.css" type="text/css" media="all" />
+</head>
+
+<body>
+	<!-- login form -->
+	<section class="w3l-login">
+		<div class="overlay">
+			<div class="wrapper">
+				<div class="logo">
+					<a class="brand-logo" href="index.html"></a>
+				</div>
+				<div class="form-section">
+					<h3>Giriş Ekranı</h3>
+		
+					<form asp-controller="Login" asp-action="Index" method="post" class="signin-form">
+						<div class="form-input">
+							<input type="text" name="UserName" placeholder="Kullanıcı Adınız" required="" >
+							<span asp-validation-for="UserName" class="text-danger"></span>
+						</div>
+						<div class="form-input">
+							<input type="password" name="Password" placeholder="Şifreniz" required="">
+							<span asp-validation-for="Password" class="text-danger"></span>
+						</div>
+						<label class="check-remaind">
+							<input type="checkbox" asp-for="Remember" class="form-check-input">
+							<span class="checkmark"></span>
+							<p class="remember">Beni Hatırla</p>
+						</label>
+						<button type="submit" class="btn btn-primary theme-button mt-4">Giriş Yap</button>
+						<div class="new-signup">
+							<a href="#reload" class="signuplink"></a>
+						</div>
+						<div asp-validation-summary="ModelOnly" class="text-danger" style="color:red"></div>
+					</form>
+					<p class="signup">Henüz bir hesabınız yok mu? <a href="/Register/Index" class="signuplink">Kayıt Ol</a></p>
+				</div>
+			</div>
+		</div>
+		<div id='stars'></div>
+		<div id='stars2'></div>
+		<div id='stars3'></div>
+
+		<!-- copyright -->
+		<div class="copy-right">
+			
+		</div>
+		<!-- //copyright -->
+	</section>
+
+	<!-- /login form -->
+</body>
+
+</html>

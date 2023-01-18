@@ -1,0 +1,38 @@
+﻿@model List<GetAllAboutQueryResult>
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int sayac = 0;
+}
+
+<h1>Hakkımda Listesi</h1>
+
+
+<div class=" container">
+    <br />
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Ana Başlık</th>
+            <th>Alt Başlık</th>
+            <th>Açıklama</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Detaylar </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            sayac++;
+            <tr>
+                <td>@sayac</td>
+                <td>@item.Title</td>
+                <td>@item.Title2</td>
+                <td><textarea rows="6" cols="50">@item.Description</textarea></td>
+                <td><a href="/Admin/About/DeleteAbout/@item.AboutId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Admin/About/UpdateAbout/@item.AboutId" class="btn btn-success">Güncelle</a></td>
+                <td><a href="/Admin/About/GetAboutById/@item.AboutId" class="btn btn-warning">Detay</a></td>
+            </tr>
+        }
+    </table>
+    <a href="/Admin/About/AddAbout" class="btn btn-info">Yeni Ekle</a>
+</div>

@@ -1,0 +1,24 @@
+﻿@model CreateAboutCommand
+@{
+    ViewData["Title"] = "AddAbout";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Hakkımda Ekleme Sayfası</h1>
+
+<form method="post">
+    <label>Ana Başlık</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+    <br />
+    <label>Alt Başlık</label>
+    <input type="text" asp-for="Title2" class="form-control" />
+    <span asp-validation-for="Title2" class="text-danger"></span>
+    <br />
+    <label>Açıklama</label>
+    <textarea rows="4" cols="50" asp-for="Description" class="form-control"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</form>
+

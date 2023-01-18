@@ -1,0 +1,21 @@
+﻿@model GetAboutByIdQueryResult
+
+@{
+	ViewData["Title"] = "GetAboutById";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>GetAboutById</h1>
+
+<div class="container">
+
+	<label>Başlık</label>
+	<input type="text" asp-for="Title" class="form-control" />
+	<br />
+	<label>Başlık 2</label>
+	<input type="text" asp-for="Title2" class="form-control" />
+	<br />
+	<label>Açıklama</label>
+	<textarea  rows="4" cols="50" asp-for="Description" class="form-control"></textarea>
+	<br />	
+</div>
