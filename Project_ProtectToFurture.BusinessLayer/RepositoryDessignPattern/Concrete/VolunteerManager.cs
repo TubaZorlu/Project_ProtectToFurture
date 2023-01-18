@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Abstract;
-using Project_ProtectToFurture.DataAccessLayer.Abstract;
 using Project_ProtectToFurture.DataAccessLayer.UnitOfWork;
-using Project_ProtectToFurture.DTOLayer.FeatureDtos;
 using Project_ProtectToFurture.DTOLayer.ProjectDtos;
+using Project_ProtectToFurture.DTOLayer.VolunteerDtos;
 using Project_ProtectToFurture.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -13,48 +12,50 @@ using System.Threading.Tasks;
 
 namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Concrete
 {
-    public class FeatureManager : IFeatureService
+    public class VolunteerManager : IVolunteerService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public FeatureManager(IUnitOfWork unitOfWork, IMapper mapper)
+        public VolunteerManager(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
-        public void Create(FeatureCreateDto dto)
+        public void Create(VolunteerCreateDto dto)
         {
-            _unitOfWork.GetRepository<Feature>().Insert(_mapper.Map<Feature>(dto));
+            _unitOfWork.GetRepository<Volunteer>().Insert(_mapper.Map<Volunteer>(dto));
             _unitOfWork.Save();
         }
 
         public void Delete(int id)
         {
-            var removeEntity = _unitOfWork.GetRepository<Feature>().GetById(id);
-            _unitOfWork.GetRepository<Feature>().Delete(removeEntity);
+            var removeEntity = _unitOfWork.GetRepository<Volunteer>().GetById(id);
+            _unitOfWork.GetRepository<Volunteer>().Delete(removeEntity);
             _unitOfWork.Save();
         }
 
-        public List<FeatureListDto> GetAll()
+        public List<VolunterListDto> GetAll()
         {
-            return _mapper.Map<List<FeatureListDto>>(_unitOfWork.GetRepository<Feature>().GetAll());
+            return _mapper.Map<List<VolunterListDto>>(_unitOfWork.GetRepository<Volunteer>().GetAll());
         }
 
         public IDto GetById<IDto>(int id)
         {
-            return _mapper.Map<IDto>(_unitOfWork.GetRepository<Feature>().GetById(id));
+            return _mapper.Map<IDto>(_unitOfWork.GetRepository<Volunteer>().GetById(id));
         }
 
-        public void Update(FeatureUpdateDto dto)
+        public void Update(VolunteerUpdateDto dto)
         {
-            var updateEntity = _unitOfWork.GetRepository<Feature>().GetById(dto.FeatureId);
+            var updateEntity = _unitOfWork.GetRepository<Volunteer>().GetById(dto.VolunteerId);
             if (updateEntity != null)
             {
-                _unitOfWork.GetRepository<Feature>().Update(_mapper.Map<Feature>(dto), updateEntity);
+                _unitOfWork.GetRepository<Volunteer>().Update(_mapper.Map<Volunteer>(dto), updateEntity);
                 _unitOfWork.Save();
             }
         }
+
+
     }
 }

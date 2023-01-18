@@ -17,11 +17,10 @@ namespace Project_ProtectToFurture.DataAccessLayer.Configuration
             builder.Property(x => x.VolunteerId).IsRequired();
             builder.Property(x => x.Name).HasMaxLength(20).IsRequired();
             builder.Property(x => x.Surname).HasMaxLength(20).IsRequired();
-            builder.Property(x => x.volunteerEmail).IsRequired();
+            builder.Property(x => x.VolunteerEmail).IsRequired();
 
-            builder.HasOne(x => x.AppUser)
-                    .WithMany(x => x.Volunteers)
-                    .HasForeignKey(x => x.VolunteerId);
+           
+
 
         }
     }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_ProtectToFurture.DataAccessLayer.Context;
 
 namespace Project_ProtectToFurture.DataAccessLayer.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    partial class ProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20230118205601__add_contact_name")]
+    partial class _add_contact_name
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -367,9 +369,9 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                     b.ToTable("Contacts");
                 });
 
-            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Donor", b =>
+            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Donar", b =>
                 {
-                    b.Property<int>("DonorId")
+                    b.Property<int>("DonarId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -377,28 +379,28 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                     b.Property<double>("Amout")
                         .HasColumnType("float");
 
-                    b.Property<string>("DonorAdress")
+                    b.Property<string>("DonarAdress")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<string>("DonorCity")
+                    b.Property<string>("DonarCity")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("DonorEmail")
+                    b.Property<string>("DonarEmail")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("DonorName")
+                    b.Property<string>("DonarName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("DonorPhone")
+                    b.Property<string>("DonarPhone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DonorSurname")
+                    b.Property<string>("DonarSurname")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -406,24 +408,9 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("DonorId");
+                    b.HasKey("DonarId");
 
-                    b.ToTable("Donors");
-                });
-
-            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.DonorProject", b =>
-                {
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DonorId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProjectId", "DonorId");
-
-                    b.HasIndex("DonorId");
-
-                    b.ToTable("DonorProject");
+                    b.ToTable("Donars");
                 });
 
             modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Feature", b =>
@@ -562,35 +549,6 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.DonorProject", b =>
-                {
-                    b.HasOne("Project_ProtectToFurture.EntityLayer.Concrete.Donor", "Donor")
-                        .WithMany("DonorProjects")
-                        .HasForeignKey("DonorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Project_ProtectToFurture.EntityLayer.Concrete.Project", "Project")
-                        .WithMany("DonorProjects")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Donor");
-
-                    b.Navigation("Project");
-                });
-
-            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Donor", b =>
-                {
-                    b.Navigation("DonorProjects");
-                });
-
-            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Project", b =>
-                {
-                    b.Navigation("DonorProjects");
                 });
 #pragma warning restore 612, 618
         }

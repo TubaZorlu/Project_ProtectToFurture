@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Project_ProtectToFurture.DataAccessLayer.EntityFramework
 {
-    public class EfDonarDal : GenericRepository<Donar>, IDonarDal
+    public class EfDonorDal : GenericRepository<Donor>, IDonorDal
     {
-        public EfDonarDal(ProjectContext projectContext) : base(projectContext)
+        public EfDonorDal(ProjectContext projectContext) : base(projectContext)
         {
         }
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Abstract
 {
-    public interface IDonarService:IGenericService<Donar>
+    public interface IDonorService:IGenericService<Donor>
     {
     }
 }

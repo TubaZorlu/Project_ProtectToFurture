@@ -10,40 +10,40 @@ using System.Threading.Tasks;
 
 namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Concrete
 {
-    public class DonarManager : IDonarService
+    public class DonorManager : IDonorService
     {
-        private readonly IDonarDal _donarDal;
+        private readonly IDonorDal _donorDal;
         private readonly IUnitOfWork _unitOfWork;
 
-        public DonarManager(IDonarDal donarDal, IUnitOfWork unitOfWork)
+        public DonorManager(IDonorDal donarDal, IUnitOfWork unitOfWork)
         {
-            _donarDal = donarDal;
+            _donorDal = donarDal;
             _unitOfWork = unitOfWork;
         }
 
-        public void TDelete(Donar t)
+        public void TDelete(Donor t)
         {
-            _donarDal.Delete(t);
+            _donorDal.Delete(t);
             _unitOfWork.Save();
         }
 
-        public List<Donar> TGetAll()
+        public List<Donor> TGetAll()
         {
-            return _donarDal.GetAll();
+            return _donorDal.GetAll();
         }
 
-        public Donar TGetById(int id)
+        public Donor TGetById(int id)
         {
-            return _donarDal.GetById(id);
+            return _donorDal.GetById(id);
         }
 
-        public void TInsert(Donar t)
+        public void TInsert(Donor t)
         {
-            _donarDal.Insert(t);
+            _donorDal.Insert(t);
             _unitOfWork.Save();
         }
 
-        public void TUpdate(Donar t)
+        public void TUpdate(Donor t)
         {
             //_donarDal.Update(t);
             //_unitOfWork.Save();

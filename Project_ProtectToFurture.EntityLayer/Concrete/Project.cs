@@ -15,5 +15,8 @@ namespace Project_ProtectToFurture.EntityLayer.Concrete
 		public string Area { get; set; }
 		public string Details { get; set; }
 		public bool Status { get; set; } = true;
-	}
+
+        public List<DonorProject> DonorProjects { get; set; }
+
+    }
 }

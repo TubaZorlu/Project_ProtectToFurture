@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Project_ProtectToFurture.DataAccessLayer.Abstract
 {
-    public interface IDonarDal:IGenericDal<Donar>
+    public interface IVolunteerDal:IGenericDal<Volunteer>
     {
+
     }
 }

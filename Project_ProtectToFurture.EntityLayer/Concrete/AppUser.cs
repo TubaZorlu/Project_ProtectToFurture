@@ -16,6 +16,6 @@ namespace Project_ProtectToFurture.EntityLayer.Concrete
 		public string Description { get; set; }
 		public string ImageUrl { get; set; }
 		public string Code { get; set; }
-		public List<Volunteer> Volunteers { get; set; }
+	
 	}
 }

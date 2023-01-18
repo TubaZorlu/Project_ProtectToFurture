@@ -1,6 +1,9 @@
-﻿using Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Abstract;
+﻿using AutoMapper;
+using Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Abstract;
 using Project_ProtectToFurture.DataAccessLayer.Abstract;
 using Project_ProtectToFurture.DataAccessLayer.UnitOfWork;
+using Project_ProtectToFurture.DTOLayer.ContactDtos;
+using Project_ProtectToFurture.DTOLayer.ProjectDtos;
 using Project_ProtectToFurture.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -12,43 +15,35 @@ namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Concre
 {
     public class ContactManager : IContactService
     {
-        private readonly IContactDal _contactDal;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public ContactManager(IContactDal contactDal, IUnitOfWork unitOfWork)
+        public ContactManager(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _contactDal = contactDal;
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
-        public void TDelete(Contact t)
+        public void Create(ContactCreateDto dto)
         {
-            _contactDal.Delete(t);
+            _unitOfWork.GetRepository<Contact>().Insert(_mapper.Map<Contact>(dto));
             _unitOfWork.Save();
         }
 
-        public List<Contact> TGetAll()
+        public void Delete(int id)
         {
-            return _contactDal.GetAll();
-            
-        }
-
-        public Contact TGetById(int id)
-        {
-            return _contactDal.GetById(id);
-        }
-
-        public void TInsert(Contact t)
-        {
-            _contactDal.Insert(t);
+            var removeEntity = _unitOfWork.GetRepository<Contact>().GetById(id);
+            _unitOfWork.GetRepository<Contact>().Delete(removeEntity);
             _unitOfWork.Save();
         }
 
-        public void TUpdate(Contact t)
+        public List<ContactListDto> GetAll()
         {
+            return _mapper.Map<List<ContactListDto>>(_unitOfWork.GetRepository<Contact>().GetAll());        }
 
-            //_contactDal.Update(t);
-            //_unitOfWork.Save();
+        public IDto GetById<IDto>(int id)
+        {
+            return _mapper.Map<IDto>(_unitOfWork.GetRepository<Contact>().GetById(id));
         }
     }
 }

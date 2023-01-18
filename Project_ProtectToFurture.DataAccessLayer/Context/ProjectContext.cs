@@ -21,10 +21,11 @@ namespace Project_ProtectToFurture.DataAccessLayer.Context
 		public DbSet<About> Abouts { get; set; }
 		public DbSet<Blog> Blogs { get; set; }
 		public DbSet<Contact> Contacts { get; set; }
-		public DbSet<Donar> Donars { get; set; }
+		public DbSet<Donor> Donors { get; set; }
 		public DbSet<Feature> Features { get; set; }
 		public DbSet<Project> Projects { get; set; }
 		public DbSet<Event> Events { get; set; }
+		public DbSet<Volunteer> Volunteers { get; set; }
 
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -33,10 +34,11 @@ namespace Project_ProtectToFurture.DataAccessLayer.Context
 			modelBuilder.ApplyConfiguration(new AboutConfiguration());
 			modelBuilder.ApplyConfiguration(new BlogConfiguration());
 			modelBuilder.ApplyConfiguration(new ContactConfiguration());
-			modelBuilder.ApplyConfiguration(new DonarConfiguration());
+			modelBuilder.ApplyConfiguration(new DonorConfiguration());
 			modelBuilder.ApplyConfiguration(new EventConfiguration());
 			modelBuilder.ApplyConfiguration(new FeatureConfiguration());
 			modelBuilder.ApplyConfiguration(new ProjectConfiguration());
+			modelBuilder.ApplyConfiguration(new DonorProjecConfiguration());
 			base.OnModelCreating(modelBuilder);
 
 		}
