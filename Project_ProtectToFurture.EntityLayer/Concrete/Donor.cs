@@ -19,7 +19,7 @@ namespace Project_ProtectToFurture.EntityLayer.Concrete
 		public string DonorPhone { get; set; }
 		public bool Status { get; set; } = true;
 
-		public List<DonorProject> DonorProjects { get;set; }
+		public List<Project> Projects { get;set; }
 
 	}
 }

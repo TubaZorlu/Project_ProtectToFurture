@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Project_ProtectToFurture.EntityLayer.Concrete
 {
@@ -16,7 +12,8 @@ namespace Project_ProtectToFurture.EntityLayer.Concrete
 		public string Details { get; set; }
 		public bool Status { get; set; } = true;
 
-        public List<DonorProject> DonorProjects { get; set; }
+		public int DonorId { get; set; }
+		public Donor Donor { get; set; }
 
-    }
+	}
 }

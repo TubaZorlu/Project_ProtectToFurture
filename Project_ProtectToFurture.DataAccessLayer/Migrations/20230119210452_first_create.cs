@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Project_ProtectToFurture.DataAccessLayer.Migrations
 {
-    public partial class create_db : Migration
+    public partial class first_create : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,9 +48,11 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -94,6 +96,7 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                 {
                     ContanctId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Message = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
@@ -105,23 +108,23 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Donars",
+                name: "Donors",
                 columns: table => new
                 {
-                    DonarId = table.Column<int>(type: "int", nullable: false)
+                    DonorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Amout = table.Column<double>(type: "float", nullable: false),
-                    DonarName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    DonarSurname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    DonarAdress = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    DonarCity = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    DonarEmail = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    DonarPhone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DonorName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    DonorSurname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    DonorAdress = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    DonorCity = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    DonorEmail = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    DonorPhone = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Donars", x => x.DonarId);
+                    table.PrimaryKey("PK_Donors", x => x.DonorId);
                 });
 
             migrationBuilder.CreateTable(
@@ -131,10 +134,12 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     start = table.Column<DateTime>(type: "datetime2", nullable: false),
                     end = table.Column<DateTime>(type: "datetime2", nullable: false),
                     color = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
-                    textColor = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true)
+                    textColor = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
+                    IsFullDay = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -149,6 +154,7 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Descriptin = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -157,20 +163,21 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Projects",
+                name: "Volunteers",
                 columns: table => new
                 {
-                    ProjectId = table.Column<int>(type: "int", nullable: false)
+                    VolunteerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    FundNeed = table.Column<double>(type: "float", nullable: false),
-                    Area = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Details = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    Status = table.Column<bool>(type: "bit", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VolunteerEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VolunteerPhone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    About = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Projects", x => x.ProjectId);
+                    table.PrimaryKey("PK_Volunteers", x => x.VolunteerId);
                 });
 
             migrationBuilder.CreateTable(
@@ -279,6 +286,30 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Projects",
+                columns: table => new
+                {
+                    ProjectId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    FundNeed = table.Column<double>(type: "float", nullable: false),
+                    Area = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Details = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    DonorId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projects", x => x.ProjectId);
+                    table.ForeignKey(
+                        name: "FK_Projects_Donors_DonorId",
+                        column: x => x.DonorId,
+                        principalTable: "Donors",
+                        principalColumn: "DonorId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -317,6 +348,11 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projects_DonorId",
+                table: "Projects",
+                column: "DonorId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -346,9 +382,6 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                 name: "Contacts");
 
             migrationBuilder.DropTable(
-                name: "Donars");
-
-            migrationBuilder.DropTable(
                 name: "Events");
 
             migrationBuilder.DropTable(
@@ -358,10 +391,16 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                 name: "Projects");
 
             migrationBuilder.DropTable(
+                name: "Volunteers");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Donors");
         }
     }
 }

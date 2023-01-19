@@ -16,11 +16,12 @@ namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Concre
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-
-        public ProjectManager(IUnitOfWork unitOfWork, IMapper mapper)
+        private readonly IProjectDal _projectDal;
+        public ProjectManager(IUnitOfWork unitOfWork, IMapper mapper, IProjectDal projectDal)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _projectDal = projectDal;
         }
 
         public void Create(ProjectCreateDto dto)
@@ -44,6 +45,11 @@ namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Concre
         public IDto GetById<IDto>(int id)
         {
             return _mapper.Map<IDto>(_unitOfWork.GetRepository<Project>().GetById(id));
+        }
+
+        public List<ProjectListDto> GetProjectWithDonor()
+        {
+            return _mapper.Map<List<ProjectListDto>>(_projectDal.GetProjectWithDonor());
         }
 
         public void Update(ProjectUpdateDto dto)

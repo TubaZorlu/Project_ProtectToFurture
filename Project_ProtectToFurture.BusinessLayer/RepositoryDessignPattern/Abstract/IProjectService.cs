@@ -12,6 +12,7 @@ namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Abstra
     public interface IProjectService
     {
         List<ProjectListDto> GetAll();
+        List<ProjectListDto> GetProjectWithDonor();
 
         void Create(ProjectCreateDto dto);
 

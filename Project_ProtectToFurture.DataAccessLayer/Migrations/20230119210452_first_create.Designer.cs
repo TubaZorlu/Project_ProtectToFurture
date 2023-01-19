@@ -10,8 +10,8 @@ using Project_ProtectToFurture.DataAccessLayer.Context;
 namespace Project_ProtectToFurture.DataAccessLayer.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    [Migration("20230110211723_mig2")]
-    partial class mig2
+    [Migration("20230119210452_first_create")]
+    partial class first_create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -129,8 +129,8 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte>("IsFullDay")
-                        .HasColumnType("tinyint");
+                    b.Property<bool>("IsFullDay")
+                        .HasColumnType("bit");
 
                     b.Property<string>("color")
                         .HasMaxLength(10)
@@ -235,6 +235,9 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -248,6 +251,9 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
@@ -349,6 +355,9 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
@@ -360,9 +369,9 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                     b.ToTable("Contacts");
                 });
 
-            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Donar", b =>
+            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Donor", b =>
                 {
-                    b.Property<int>("DonarId")
+                    b.Property<int>("DonorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -370,28 +379,28 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                     b.Property<double>("Amout")
                         .HasColumnType("float");
 
-                    b.Property<string>("DonarAdress")
+                    b.Property<string>("DonorAdress")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<string>("DonarCity")
+                    b.Property<string>("DonorCity")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("DonarEmail")
+                    b.Property<string>("DonorEmail")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("DonarName")
+                    b.Property<string>("DonorName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("DonarPhone")
+                    b.Property<string>("DonorPhone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DonarSurname")
+                    b.Property<string>("DonorSurname")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -399,9 +408,9 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("DonarId");
+                    b.HasKey("DonorId");
 
-                    b.ToTable("Donars");
+                    b.ToTable("Donors");
                 });
 
             modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Feature", b =>
@@ -410,6 +419,9 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Descriptin")
                         .HasMaxLength(1000)
@@ -442,6 +454,9 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<int>("DonorId")
+                        .HasColumnType("int");
+
                     b.Property<double>("FundNeed")
                         .HasColumnType("float");
 
@@ -455,7 +470,39 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
 
                     b.HasKey("ProjectId");
 
+                    b.HasIndex("DonorId");
+
                     b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Volunteer", b =>
+                {
+                    b.Property<int>("VolunteerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("About")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VolunteerEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VolunteerPhone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("VolunteerId");
+
+                    b.ToTable("Volunteers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -507,6 +554,22 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Project", b =>
+                {
+                    b.HasOne("Project_ProtectToFurture.EntityLayer.Concrete.Donor", "Donor")
+                        .WithMany("Projects")
+                        .HasForeignKey("DonorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Donor");
+                });
+
+            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Donor", b =>
+                {
+                    b.Navigation("Projects");
                 });
 #pragma warning restore 612, 618
         }

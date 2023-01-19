@@ -1,4 +1,5 @@
 ﻿using Project_ProtectToFurture.DTOLayer.Abstract;
+using Project_ProtectToFurture.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Project_ProtectToFurture.DTOLayer.ProjectDtos
         public double FundNeed { get; set; }
         public string Area { get; set; }
         public string Details { get; set; }
-   
+        public Donor Donor { get; set; }
+
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Project_ProtectToFurture.DataAccessLayer.Migrations;
 using Project_ProtectToFurture.DTOLayer.UserDto;
 using Project_ProtectToFurture.EntityLayer.Concrete;
 using System.Security.Claims;

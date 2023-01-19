@@ -38,7 +38,7 @@ namespace Project_ProtectToFurture.DataAccessLayer.Context
 			modelBuilder.ApplyConfiguration(new EventConfiguration());
 			modelBuilder.ApplyConfiguration(new FeatureConfiguration());
 			modelBuilder.ApplyConfiguration(new ProjectConfiguration());
-			modelBuilder.ApplyConfiguration(new DonorProjecConfiguration());
+		
 			base.OnModelCreating(modelBuilder);
 
 		}

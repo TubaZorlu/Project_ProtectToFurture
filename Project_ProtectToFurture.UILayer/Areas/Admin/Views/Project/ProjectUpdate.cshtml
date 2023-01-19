@@ -1,0 +1,32 @@
+﻿@model ProjectUpdateDto
+@{
+    ViewData["Title"] = "ProjectUpdate";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>Proje Güncelleme Sayfası</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="ProjectId"/>
+    <label> Başlık</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+    <br />
+    <label> Bölge</label>
+    <input type="text" asp-for="Area" class="form-control" />
+    <span asp-validation-for="Area" class="text-danger"></span>
+    <br />
+    <label> Proje Bedeli</label>
+    <input type="number" asp-for="FundNeed" class="form-control" />
+    <span asp-validation-for="FundNeed" class="text-danger"></span>
+    <br />
+    <label>Açıklama</label>
+    <textarea rows="4" cols="50" asp-for="Details" class="form-control"></textarea>
+    <span asp-validation-for="Details" class="text-danger"></span>
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</form>
+
+
+

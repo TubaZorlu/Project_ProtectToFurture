@@ -9,5 +9,6 @@ namespace Project_ProtectToFurture.DataAccessLayer.Abstract
 {
     public interface IProjectDal:IGenericDal<Project>
     {
+        List<Project> GetProjectWithDonor();
     }
 }

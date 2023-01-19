@@ -48,8 +48,9 @@ namespace Project_ProtectToFurture.UILayer
 				opt.Cookie.SameSite = SameSiteMode.Strict;
 				opt.Cookie.SecurePolicy = CookieSecurePolicy.None;
 				opt.Cookie.Name = "FinalProject";
-				opt.ExpireTimeSpan= TimeSpan.FromDays(7);
+				opt.ExpireTimeSpan= TimeSpan.FromDays(1);
 				opt.LoginPath = new PathString("/WebSite/Default/Index/");
+				opt.AccessDeniedPath = new PathString("/WebSite/Default/Index/");
 			});
 
 			//jwt token konfigürayonu 

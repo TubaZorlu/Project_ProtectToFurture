@@ -39,7 +39,8 @@ namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Concre
 
         public List<ContactListDto> GetAll()
         {
-            return _mapper.Map<List<ContactListDto>>(_unitOfWork.GetRepository<Contact>().GetAll());        }
+            return _mapper.Map<List<ContactListDto>>(_unitOfWork.GetRepository<Contact>().GetAll());  
+        }
 
         public IDto GetById<IDto>(int id)
         {

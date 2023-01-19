@@ -1,6 +1,9 @@
-﻿using Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Abstract;
+﻿using AutoMapper;
+using Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Abstract;
 using Project_ProtectToFurture.DataAccessLayer.Abstract;
 using Project_ProtectToFurture.DataAccessLayer.UnitOfWork;
+using Project_ProtectToFurture.DTOLayer.ContactDtos;
+using Project_ProtectToFurture.DTOLayer.DonorDto;
 using Project_ProtectToFurture.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -12,41 +15,43 @@ namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Concre
 {
     public class DonorManager : IDonorService
     {
-        private readonly IDonorDal _donorDal;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
+        private readonly IDonorDal _donorDal;
 
-        public DonorManager(IDonorDal donarDal, IUnitOfWork unitOfWork)
+
+
+        public DonorManager(IUnitOfWork unitOfWork, IMapper mapper, IDonorDal donorDal)
         {
-            _donorDal = donarDal;
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
+            _donorDal = donorDal;
         }
 
-        public void TDelete(Donor t)
+        public void Create(DonorCreateDto dto)
         {
-            _donorDal.Delete(t);
+            _unitOfWork.GetRepository<Donor>().Insert(_mapper.Map<Donor>(dto));
             _unitOfWork.Save();
         }
 
-        public List<Donor> TGetAll()
+        public void Delete(int id)
         {
-            return _donorDal.GetAll();
-        }
-
-        public Donor TGetById(int id)
-        {
-            return _donorDal.GetById(id);
-        }
-
-        public void TInsert(Donor t)
-        {
-            _donorDal.Insert(t);
+            var removeEntity = _unitOfWork.GetRepository<Donor>().GetById(id);
+            _unitOfWork.GetRepository<Donor>().Delete(removeEntity);
             _unitOfWork.Save();
         }
 
-        public void TUpdate(Donor t)
+        public List<DonorListDto> GetAll()
         {
-            //_donarDal.Update(t);
-            //_unitOfWork.Save();
+           
+            return _mapper.Map<List<DonorListDto>>(_unitOfWork.GetRepository<Donor>().GetAll());
         }
+
+        public IDto GetById<IDto>(int id)
+        {
+            return _mapper.Map<IDto>(_unitOfWork.GetRepository<Donor>().GetById(id));
+        }
+
+        
     }
 }

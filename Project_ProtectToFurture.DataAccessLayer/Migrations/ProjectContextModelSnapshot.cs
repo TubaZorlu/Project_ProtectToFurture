@@ -411,21 +411,6 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                     b.ToTable("Donors");
                 });
 
-            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.DonorProject", b =>
-                {
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DonorId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProjectId", "DonorId");
-
-                    b.HasIndex("DonorId");
-
-                    b.ToTable("DonorProject");
-                });
-
             modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Feature", b =>
                 {
                     b.Property<int>("FeatureId")
@@ -467,6 +452,9 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<int>("DonorId")
+                        .HasColumnType("int");
+
                     b.Property<double>("FundNeed")
                         .HasColumnType("float");
 
@@ -479,6 +467,8 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("ProjectId");
+
+                    b.HasIndex("DonorId");
 
                     b.ToTable("Projects");
                 });
@@ -564,33 +554,20 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.DonorProject", b =>
+            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Project", b =>
                 {
                     b.HasOne("Project_ProtectToFurture.EntityLayer.Concrete.Donor", "Donor")
-                        .WithMany("DonorProjects")
+                        .WithMany("Projects")
                         .HasForeignKey("DonorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Project_ProtectToFurture.EntityLayer.Concrete.Project", "Project")
-                        .WithMany("DonorProjects")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Donor");
-
-                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Donor", b =>
                 {
-                    b.Navigation("DonorProjects");
-                });
-
-            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Project", b =>
-                {
-                    b.Navigation("DonorProjects");
+                    b.Navigation("Projects");
                 });
 #pragma warning restore 612, 618
         }

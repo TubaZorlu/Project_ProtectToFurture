@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
 {
-	[Area("Admin")]
-	[Authorize("Admin")]
-	public class AdminManagementController : Controller
+    [Area("Admin")]
+    [Authorize(Roles = "Admin")]
+    public class AdminManagementController : Controller
 	{
 	
 		public IActionResult Index()

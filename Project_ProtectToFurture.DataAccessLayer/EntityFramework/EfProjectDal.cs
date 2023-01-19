@@ -1,4 +1,5 @@
-﻿using Project_ProtectToFurture.DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using Project_ProtectToFurture.DataAccessLayer.Abstract;
 using Project_ProtectToFurture.DataAccessLayer.Context;
 using Project_ProtectToFurture.DataAccessLayer.Repository;
 using Project_ProtectToFurture.EntityLayer.Concrete;
@@ -14,6 +15,15 @@ namespace Project_ProtectToFurture.DataAccessLayer.EntityFramework
     {
         public EfProjectDal(ProjectContext projectContext) : base(projectContext)
         {
+        }
+
+        public List<Project> GetProjectWithDonor()
+        {
+            using (var context = new ProjectContext())
+            {
+                var result = context.Projects.Include(x => x.Donor).ToList();
+                return result;
+            }
         }
     }
 }

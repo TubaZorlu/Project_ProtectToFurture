@@ -21,8 +21,6 @@ namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Abstra
 
         void Update(BlogUpdateDto dto);
 
-      
 
-     
     }
 }

@@ -1,0 +1,23 @@
+﻿@model ProjectListDto
+@{
+    ViewData["Title"] = "GetById";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Proje Detay</h1>
+
+<div class="container">
+
+	<label>Başlık</label>
+	<input type="text" asp-for="Title" class="form-control" />
+	<br />
+	<label>Bölge</label>
+	<input type="text" asp-for="Area" class="form-control" />
+	<br />
+	<label>Proje Bedeli</label>
+	<input type="text" asp-for="FundNeed" class="form-control" />
+	<br />
+	<label>Açıklama</label>
+	<textarea  rows="4" cols="50" asp-for="Details" class="form-control"></textarea>
+	<br />	
+</div>

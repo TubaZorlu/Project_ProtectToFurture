@@ -3,6 +3,7 @@ using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Project_ProtectToFurture.BusinessLayer.Mapping.BlogMapping;
 using Project_ProtectToFurture.BusinessLayer.Mapping.ContactMapping;
+using Project_ProtectToFurture.BusinessLayer.Mapping.DonorMapping;
 using Project_ProtectToFurture.BusinessLayer.Mapping.FeatureMapping;
 using Project_ProtectToFurture.BusinessLayer.Mapping.ProjectMapping;
 using Project_ProtectToFurture.BusinessLayer.Mapping.VolunteerMapping;
@@ -61,6 +62,7 @@ namespace Project_ProtectToFurture.BusinessLayer.DIContainer
                 opt.AddProfile(new VolunteerProfile());
                 opt.AddProfile(new FeatureProfile());
                 opt.AddProfile(new ContactProfile());
+                opt.AddProfile(new DonorProfile());
 
             });
             var mapper = configuration.CreateMapper();

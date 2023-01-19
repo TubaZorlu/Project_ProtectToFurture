@@ -1,4 +1,6 @@
-﻿using Project_ProtectToFurture.DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
+using Project_ProtectToFurture.DataAccessLayer.Abstract;
 using Project_ProtectToFurture.DataAccessLayer.Context;
 using Project_ProtectToFurture.DataAccessLayer.Repository;
 using Project_ProtectToFurture.EntityLayer.Concrete;
@@ -15,5 +17,8 @@ namespace Project_ProtectToFurture.DataAccessLayer.EntityFramework
         public EfDonorDal(ProjectContext projectContext) : base(projectContext)
         {
         }
+
+      
+
     }
 }

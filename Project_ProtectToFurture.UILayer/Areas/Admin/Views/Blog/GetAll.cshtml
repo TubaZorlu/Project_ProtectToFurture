@@ -5,7 +5,7 @@
     int sayac = 0;
 }
 
-<h1>Proje Listesi</h1>
+<h1>Çalışma Alanlarımız</h1>
 
 <table class="table  table-bordered">
     <tr>
@@ -15,7 +15,7 @@
         <th>Rapor Görüntüle</th>
         <th>Sil</th>
         <th>Güncelle</th>
-        <th>Detay</th>
+   @*     <th>Detay</th>*@
     </tr>
     @foreach (var item in Model)
     {
@@ -27,7 +27,7 @@
             <td><a href="@item.ImageUrl" class="btn btn-warning " target="_blank">Rapor</a> </td>
             <td><a href="/Admin/Blog/BlogDelete/@item.BlogId" class="btn btn-danger">Sil</a></td>
             <td><a href="/Admin/Blog/BlogUpdate/@item.BlogId" class="btn btn-success">Guncelle</a></td>
-            <td><a href="/Admin/Blog/GetById/@item.BlogId" class="btn btn-success">Detay</a></td>
+         @*   <td><a href="/Admin/Blog/GetById/@item.BlogId" class="btn btn-success">Detay</a></td>*@
         </tr>
 
     }

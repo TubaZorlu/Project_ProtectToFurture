@@ -25,6 +25,12 @@ namespace Project_ProtectToFurture.DataAccessLayer.Configuration
 			builder.Property(x => x.DonorEmail).IsRequired();
 			builder.Property(x => x.DonorEmail).HasMaxLength(100);
 
+			builder.HasMany(x => x.Projects)
+				.WithOne(x => x.Donor)
+				.HasForeignKey(x => x.DonorId);
+				
+				
+
 		
 		
 
