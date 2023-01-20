@@ -1,0 +1,37 @@
+﻿@model List<ContactListDto>
+@{
+    ViewData["Title"] = "ContactList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int sayac = 0;
+}
+
+<h1>İletişim Listesi</h1>
+
+<table class="table  table-bordered">
+    <tr>
+        <th>No</th>
+        <th>İsim</th>
+        <th>Telefon</th>
+        <th>Email</th>
+        <th>Mesaj</th>
+        <th>Sil</th>
+        <th>Detay</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        sayac++;
+        <tr>
+            <td>@sayac</td>
+            <td>@item.Name</td>
+            <td>@item.Phone</td>
+            <td>@item.Email</td>
+            <td>@item.Message.Substring(0,50)...</td>
+            <td><a href="/Admin/Contact/ContactDelete/@item.ContanctId" class="btn btn-danger">Sil</a></td>         
+            <td><a href="/Admin/Contact/GetById/@item.ContanctId" class="btn btn-warning">Detay</a></td>
+        </tr>
+
+    }
+
+</table>
+<a href="/Admin/Contact/ContactAdd" class="btn btn-primary">Yeni Mesaj</a>
+

@@ -14,9 +14,7 @@
         <th>Soyadı</th>
         <th>Email</th>
         <th>Bağış Tutarı</th>     
-        <th>Sil</th>
-        <th>Güncelle</th>
-        <th>Detay</th>
+       
     </tr>
     @foreach (var item in Model)
     {
@@ -26,14 +24,11 @@
                     <td>@item.DonorName</td>
                     <td>@item.DonorSurname</td>
                     <td>@item.DonorEmail</td>
-                    <td>@item.Amout</td>                 
-                    <td><a href="/Admin/Project/ProjectDelete/@item.DonorId" class="btn btn-danger">Sil</a></td>
-                    <td><a href="/Admin/Project/ProjectUpdate/@item.DonorId" class="btn btn-success">Guncelle</a></td>
-                    <td><a href="/Admin/Project/GetById/@item.DonorId" class="btn btn-warning">Detay</a></td>
+                    <td>@item.Amout</td>                             
                 </tr>
 
     }
 
 </table>
-<a href="/Admin/Project/ProjectAdd" class="btn btn-primary">Proje Ekle</a>
+
 

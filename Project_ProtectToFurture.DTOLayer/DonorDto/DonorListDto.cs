@@ -15,6 +15,6 @@ namespace Project_ProtectToFurture.DTOLayer.DonorDto
         public string DonorName { get; set; }
         public string DonorSurname { get; set; }
         public string DonorEmail { get; set; }
-        public List<Project> Projects { get; set; }
+  
     }
 }

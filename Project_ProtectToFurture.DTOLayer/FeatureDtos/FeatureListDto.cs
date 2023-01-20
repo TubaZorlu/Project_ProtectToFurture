@@ -12,7 +12,8 @@ namespace Project_ProtectToFurture.DTOLayer.FeatureDtos
         public int FeatureId { get; set; }
         public string Title { get; set; }
         public string Descriptin { get; set; }
-       
+        public DateTime CreatedDate { get; set; }
+
 
     }
 }

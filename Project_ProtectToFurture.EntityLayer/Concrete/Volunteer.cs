@@ -15,6 +15,7 @@ namespace Project_ProtectToFurture.EntityLayer.Concrete
         public string VolunteerEmail { get; set; }
         public string VolunteerPhone { get; set; }
         public string About { get; set; }
+        public bool Status { get; set; } = true;
 
         
 

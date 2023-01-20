@@ -1,15 +1,9 @@
 ﻿using AutoMapper;
 using Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Abstract;
-using Project_ProtectToFurture.DataAccessLayer.Abstract;
 using Project_ProtectToFurture.DataAccessLayer.UnitOfWork;
 using Project_ProtectToFurture.DTOLayer.ContactDtos;
-using Project_ProtectToFurture.DTOLayer.ProjectDtos;
 using Project_ProtectToFurture.EntityLayer.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Concrete
 {
@@ -26,7 +20,9 @@ namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Concre
 
         public void Create(ContactCreateDto dto)
         {
-            _unitOfWork.GetRepository<Contact>().Insert(_mapper.Map<Contact>(dto));
+		
+
+			_unitOfWork.GetRepository<Contact>().Insert(_mapper.Map<Contact>(dto));
             _unitOfWork.Save();
         }
 

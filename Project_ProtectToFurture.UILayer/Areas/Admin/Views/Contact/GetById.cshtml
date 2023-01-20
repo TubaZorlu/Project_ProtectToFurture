@@ -1,0 +1,20 @@
+﻿@model ContactListDto
+@{
+    ViewData["Title"] = "GetById";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Mesaj Detayı</h1>
+
+<div class="container">
+
+	<label>İsim</label>
+	<input type="text" asp-for="Name" class="form-control" />
+	<br />
+	<label>Email</label>
+	<input type="text" asp-for="Email" class="form-control" />
+	<br />
+	<label>Messaj</label>
+	<textarea  rows="8" cols="50" asp-for="Message" class="form-control"></textarea>
+	<br />	
+</div>

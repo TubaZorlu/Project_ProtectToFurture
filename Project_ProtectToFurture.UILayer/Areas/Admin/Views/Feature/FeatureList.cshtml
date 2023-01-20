@@ -1,0 +1,40 @@
+﻿@model List<FeatureListDto>
+@{
+    ViewData["Title"] = "FeatureList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int sayac = 0;
+}
+
+
+
+<h1>Blog Listesi</h1>
+
+<table class="table  table-bordered">
+    <tr>
+        <th>No</th>
+        <th>Başlık</th>
+        <th>Açıklama</th>
+        <th>Yayın Tarihi</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detay</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        sayac++;
+        <tr>
+            <td>@sayac</td>
+            <td>@item.Title</td>      
+            <td>@item.Descriptin.Substring(0,25)...</td>
+            <td>@item.CreatedDate.ToShortDateString()</td>
+            <td><a href="/Admin/Feature/FeatureDelete/@item.FeatureId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Admin/Feature/FeatureUpdate/@item.FeatureId" class="btn btn-success">Guncelle</a></td>
+            <td><a href="/Admin/Feature/GetById/@item.FeatureId" class="btn btn-warning">Detay</a></td>
+        </tr>
+
+    }
+
+</table>
+<div>
+    <a href="/Admin/Feature/FeatureAdd" class="btn btn-primary">Blog Ekle</a>
+</div>

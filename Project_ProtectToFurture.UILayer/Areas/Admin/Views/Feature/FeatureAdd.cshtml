@@ -1,0 +1,22 @@
+﻿@model FeatureCreateDto
+@{
+    ViewData["Title"] = "FeatureAdd";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Blog</h1>
+
+<form method="post">
+
+    <label>Başlık</label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+    <br />     
+    <label>Açıklama</label>
+    <textarea rows="6" cols="50" asp-for="Descriptin" class="form-control"></textarea>
+    <span asp-validation-for="Descriptin" class="text-danger"></span>
+    <br />
+    <button class="btn btn-info">Yeni Blog Ekle</button>
+</form>
+
+

@@ -1,0 +1,20 @@
+﻿@model ContactCreateDto
+@{
+    ViewData["Title"] = "ContactAdd";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Mesaj</h1>
+
+<form method="post">
+   
+    <label>Email</label>
+    <input type="text" asp-for="Email" class="form-control" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <br />     
+    <label>Mesaj</label>
+    <textarea rows="6" cols="50" asp-for="Message" class="form-control"></textarea>
+    <span asp-validation-for="Message" class="text-danger"></span>
+    <br />
+    <button class="btn btn-info">Gönder</button>
+</form>

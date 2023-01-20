@@ -1,0 +1,21 @@
+﻿@model FeatureListDto
+@{
+    ViewData["Title"] = "GetById";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>Blog Detayı</h1>
+
+<div class="container">
+
+	<label>Başlık</label>
+	<input type="text" asp-for="Title" class="form-control" />
+	<br />
+
+	<label>Açıklama</label>
+	<textarea  rows="8" cols="50" asp-for="Descriptin" class="form-control"></textarea>
+	<br />	
+</div>
+
+
