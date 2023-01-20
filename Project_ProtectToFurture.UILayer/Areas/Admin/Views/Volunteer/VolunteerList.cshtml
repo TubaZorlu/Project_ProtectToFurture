@@ -1,35 +1,53 @@
 ﻿@model List<VolunterListDto>
 @{
-    ViewData["Title"] = "VolunteerList";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    int sayac = 0;
+	ViewData["Title"] = "VolunteerList";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+	int sayac = 0;
 }
 
 
 <h1>Blog Listesi</h1>
 
 <table class="table  table-bordered">
-    <tr>
-        <th>No</th>
-        <th>Adı</th>
-        <th>Soyadı</th>    
-        <th>Sil</th>
-        <th>Güncelle</th>
-        <th>Detay</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        sayac++;
-            <tr>
-                <td>@sayac</td>
-                <td>@item.Name</td>      
-                <td>@item.Surname</td>
-            <td><a href="/Admin/Volunteer/VolunteerDelete/@item.VolunteerId" class="btn btn-danger">Sil</a></td>
-            <td><a href="/Admin/Volunteer/VolunteerUpdate/@item.VolunteerId" class="btn btn-success">Guncelle</a></td>
-            <td><a href="/Admin/Volunteer/GetById/@item.VolunteerId" class="btn btn-warning">Detay</a></td>
-            </tr>
+	<tr>
+		<th>No</th>
+		<th>Adı</th>
+		<th>Soyadı</th>
+		<th>Durumu</th>
+		<th>Güncelle</th>
+		<th>Detay</th>
+		<th>Pozisyon</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		sayac++;
 
-    }
+		<tr>
+			<td>@sayac</td>
+			<td>@item.Name</td>
+			<td>@item.Surname</td>
+		@if (item.Status==true)
+			{
+				<td>Aktif</td>
+			}
+			else
+			{
+				<td>Pasif</td>
+			}
+			
+			<td><a href="/Admin/Volunteer/VolunteerUpdate/@item.VolunteerId" class="btn btn-success">Guncelle</a></td>
+			<td><a href="/Admin/Volunteer/GetById/@item.VolunteerId" class="btn btn-warning" target="_blank">Detay</a></td>
+			@if (item.Status == true)
+			{
+						<td><a href="/Admin/Volunteer/VolunteerDelete/@item.VolunteerId" class="btn badge-danger">Pasif Yap</a></td>
+			}
+			else
+			{
+						<td><a href="/Admin/Volunteer/VolunteerDelete/@item.VolunteerId" class="btn badge-success">Aktif Yap</a></td>
+			}
+		</tr>
+
+	}
 
 </table>
 

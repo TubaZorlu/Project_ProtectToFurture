@@ -1,0 +1,31 @@
+﻿@model VolunterListDto
+@{
+    ViewData["Title"] = "GetById";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Gönüllü Detayı</h1>
+
+<div class="container">
+
+	<label>İsim</label>
+	<input type="text" asp-for="Name" class="form-control" />
+	<br />
+	<label>Soyisim</label>
+	<input type="text" asp-for="Surname" class="form-control" />
+	<br />
+	<label>Şehir</label>
+	<input type="text" asp-for="City" class="form-control" />
+	<br />
+	<label>Email</label>
+	<input type="text" asp-for="VolunteerEmail" class="form-control" />
+	<br />
+	<label>Poziyon</label>
+	<input type="text" asp-for="Status" class="form-control" />
+	<br />
+	<label>Hakkında</label>
+	<textarea rows="6" cols="50" asp-for="About" class="form-control"></textarea>
+	<br />
+</div>
+
+

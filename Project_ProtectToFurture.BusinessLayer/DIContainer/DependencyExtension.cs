@@ -55,6 +55,9 @@ namespace Project_ProtectToFurture.BusinessLayer.DIContainer
             services.AddScoped<IProjectService, ProjectManager>();
             services.AddScoped<IProjectDal,EfProjectDal>();
 
+            services.AddScoped<IVolunteerDal,EfVolunteerDal>();
+            services.AddScoped<IVolunteerService,VolunteerManager>();
+
             var configuration = new MapperConfiguration(opt =>
             {
                 opt.AddProfile(new BlogProfile());

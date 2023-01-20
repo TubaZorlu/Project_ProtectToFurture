@@ -16,7 +16,8 @@ namespace Project_ProtectToFurture.DTOLayer.VolunteerDtos
         public string VolunteerEmail { get; set; }
         public string VolunteerPhone { get; set; }
         public string About { get; set; }
+		public bool Status { get; set; }
 
-      
-    }
+
+	}
 }

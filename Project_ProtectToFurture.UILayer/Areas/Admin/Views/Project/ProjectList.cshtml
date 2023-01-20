@@ -1,41 +1,41 @@
 ﻿@model List<ProjectListDto>
 @{
-    ViewData["Title"] = "ProjectList";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    int sayac = 0;
+	ViewData["Title"] = "ProjectList";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+	int sayac = 0;
 }
 
 <h1>Kaynak Bekleyen Projeler</h1>
 
 <table class="table  table-bordered">
-    <tr>
-        <th>No</th>
-        <th>Başlık</th>
-        <th>Bölge</th>
-        <th>Proje Bedeli</th>
-        <th>Açıklama</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
-        <th>Detay</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        sayac++;
-            <tr>
-                <td>@sayac</td>
-                <td>@item.Title</td>
-                <td>@item.Area</td>
-                <td>@item.FundNeed.ToString()</td>
-                <td>@item.Details.Substring(0,50)...</td>         
-                <td><a href="/Admin/Project/ProjectDelete/@item.ProjectId" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Admin/Project/ProjectUpdate/@item.ProjectId" class="btn btn-success">Guncelle</a></td>
-                <td><a href="/Admin/Project/GetById/@item.ProjectId" class="btn btn-warning">Detay</a></td>
-            </tr>
+	<tr>
+		<th>No</th>
+		<th>Başlık</th>
+		<th>Bölge</th>
+		<th>Proje Bedeli</th>
+		<th>Açıklama</th>
+		<th>Sil</th>
+		<th>Güncelle</th>
+		<th>Detay</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		sayac++;
+		<tr>
+			<td>@sayac</td>
+			<td>@item.Title</td>
+			<td>@item.Area</td>
+			<td>@item.FundNeed.ToString()</td>
+			<td>@item.Details.Substring(0,50)...</td>
+			<td><a href="/Admin/Project/ProjectDelete/@item.ProjectId" class="btn btn-danger">Sil</a></td>
+			<td><a href="/Admin/Project/ProjectUpdate/@item.ProjectId" class="btn btn-success">Guncelle</a></td>
+			<td><a href="/Admin/Project/GetById/@item.ProjectId" class="btn btn-warning" target="_blank">Detay</a></td>
+		</tr>
 
-    }
+	}
 
 </table>
 <div>
-    <a href="/Admin/Project/ProjectAdd" class="btn btn-primary">Proje Ekle</a>
-    <a href="/Admin/Project/ProjectListWithDonor" class="btn btn-primary">Projelere Yapılan Bağışlar</a>
+	<a href="/Admin/Project/ProjectAdd" class="btn btn-primary">Proje Ekle</a>
+	<a href="/Admin/Project/ProjectListWithDonor" class="btn btn-primary">Projelere Yapılan Bağışlar</a>
 </div>
