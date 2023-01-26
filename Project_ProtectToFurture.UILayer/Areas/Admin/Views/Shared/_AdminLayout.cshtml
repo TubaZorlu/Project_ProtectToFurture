@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="~/css/site.css" />
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+	
 </head>
 <body>
 	<header>
@@ -20,19 +20,23 @@
 			<a href="/Admin/Donor/DonorList/" class="w3-bar-item w3-button">Bağışçılar</a>
 			<a href="/Admin/Feature/FeatureList/" class="w3-bar-item w3-button">Bloglar</a>
 			<a href="/Admin/Volunteer/VolunteerList/" class="w3-bar-item w3-button">Gönüllüler</a>
+			<a href="/Admin/Campaign/CampaignList/" class="w3-bar-item w3-button">Kampanyalar</a>
+			<a href="/Admin/Signature/Index/" class="w3-bar-item w3-button">Kampanya İmzaları</a>
 			<a href="/Admin/Contact/ContactList/" class="w3-bar-item w3-button">İletişim</a>
 			<a href="/Admin/AdminManagement/Callender/" class="w3-bar-item w3-button">Ajanda</a>
+			<a href="/WebSite/Default/Index/" class="w3-bar-item w3-button">Siteye Git</a>
+			<a href="Login/SignOut/" class="w3-bar-item w3-button">Çıkış Yap</a>
 		</div>
 	</header>
 	<div class="container">
 		@RenderBody()
 	</div>
 
-	<footer class="border-top footer text-muted">
+@*	<footer class="border-top footer text-muted">
 		<div class="container">
 			&copy; 2023 - Project_ProtectToFurture.UILayer - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
 		</div>
-	</footer>
+	</footer>*@
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="~/js/site.js" asp-append-version="true"></script>

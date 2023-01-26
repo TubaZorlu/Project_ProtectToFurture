@@ -10,13 +10,12 @@ namespace Project_ProtectToFurture.DTOLayer.DonorDto
 {
     public class DonorCreateDto:IDto
     {
+		public double Amout { get; set; }
+		public string DonorName { get; set; }
+		public string DonorSurname { get; set; }	
+		public string DonorCity { get; set; }
+		public string DonorEmail { get; set; }
+		public string DonorPhone { get; set; }
 
-        public double Amout { get; set; }
-        public string DonorName { get; set; }
-        public string DonorSurname { get; set; }
-        public string DonorCity { get; set; }
-        public string DonorEmail { get; set; }
-        public List<Project> Projects { get; set; }
-
-    }
+	}
 }

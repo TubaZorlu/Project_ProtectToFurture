@@ -338,6 +338,29 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                     b.ToTable("Blogs");
                 });
 
+            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Campaign", b =>
+                {
+                    b.Property<int>("CampaignId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CampaignDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CampaignName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("CampaignId");
+
+                    b.ToTable("Campaigns");
+                });
+
             modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Contact", b =>
                 {
                     b.Property<int>("ContanctId")
@@ -473,6 +496,29 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                     b.ToTable("Projects");
                 });
 
+            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Signature", b =>
+                {
+                    b.Property<int>("SignatureId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CampaignId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SignatureCount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SignatureDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("SignatureId");
+
+                    b.HasIndex("CampaignId");
+
+                    b.ToTable("Signatures");
+                });
+
             modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Volunteer", b =>
                 {
                     b.Property<int>("VolunteerId")
@@ -566,6 +612,22 @@ namespace Project_ProtectToFurture.DataAccessLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("Donor");
+                });
+
+            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Signature", b =>
+                {
+                    b.HasOne("Project_ProtectToFurture.EntityLayer.Concrete.Campaign", "Campaign")
+                        .WithMany("Signatures")
+                        .HasForeignKey("CampaignId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Campaign");
+                });
+
+            modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Campaign", b =>
+                {
+                    b.Navigation("Signatures");
                 });
 
             modelBuilder.Entity("Project_ProtectToFurture.EntityLayer.Concrete.Donor", b =>

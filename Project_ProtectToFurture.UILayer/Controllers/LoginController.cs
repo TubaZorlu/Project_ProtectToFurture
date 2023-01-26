@@ -72,10 +72,15 @@ namespace Project_ProtectToFurture.UILayer.Controllers
 			return View(model);
 		}
 
-		public async Task<IActionResult> SignOutAsync() 
+		public async Task<IActionResult> SignOut() 
 		{
 			await _signInManager.SignOutAsync();
 			return RedirectToAction("Index");
+		}
+
+		public IActionResult Deneme() 
+		{
+			return View();
 		}
 	}
 }

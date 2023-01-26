@@ -1,0 +1,21 @@
+﻿@model CampaignListDto
+@{
+    ViewData["Title"] = "GetById";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kampanya Detayı</h1>
+
+<div class="container">
+
+	<label>Kampanya Adı</label>
+	<input type="text" asp-for="CampaignName" class="form-control" />
+	<br />
+
+	<label>Açıklama</label>
+	<textarea  rows="8" cols="50" asp-for="CampaignDescription" class="form-control"></textarea>
+	<br />	
+</div>
+
+
+

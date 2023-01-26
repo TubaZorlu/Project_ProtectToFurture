@@ -3,8 +3,6 @@
 	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +12,7 @@
 	<script src="~/full/lib/locales-all.js"></script>
 	<link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
 	<script>
-
+	
 
 		document.addEventListener('DOMContentLoaded', function () {
 			var calendarEl = document.getElementById('calendar');
@@ -33,9 +31,12 @@
 				selectable: true,
 				selectMirror: true,
 
-				select: function (arg) {
-					var title1 = prompt('Başlık:');
+			
 
+				select: function (arg) {
+					debugger;
+
+					var title1 = prompt('Başlık:');
 					var date1 = prompt('Başlangıç Tarihi:');
 					var date2 = prompt('Bitiş Tarihi:');
 
@@ -43,7 +44,6 @@
 					if (title1) {
 
 						calendar.addEvent({
-
 
 
 							title: title1,
@@ -73,7 +73,7 @@
 
 						type: "post",
 						url: "/Admin/AdminManagement/Ekle/",
-						data: olay,
+						data: olay
 						//success: function (func2) {
 						//	let result = jQuery.parseJSON(func2);
 						//	alert("Etkinlik başarılı bir şekilde eklendi")

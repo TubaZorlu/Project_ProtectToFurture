@@ -1,0 +1,25 @@
+﻿@model CampaignUpdateDto
+@{
+    ViewData["Title"] = "CampaignUpdate";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kampanya Güncelleme Sayfası</h1>
+
+<form method="post" >
+	<label>Kampanya Adı</label>
+	<input type="hidden"  asp-for="CampaignId"/>
+	<input type="text" asp-for="CampaignName" class="form-control" />
+	<span asp-validation-for="CampaignName" class="text-danger"></span>
+	<br />
+	<br />
+	<label>Açıklama</label>
+	<textarea rows="4" cols="50" asp-for="CampaignDescription" class="form-control"></textarea>
+	<span asp-validation-for="CampaignDescription" class="text-danger"></span>
+	<br />
+	<button class="btn btn-info">Güncelle</button>
+</form>
+
+
+
+

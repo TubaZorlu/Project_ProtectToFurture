@@ -49,11 +49,9 @@ namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Concre
         public void Update(VolunteerUpdateDto dto)
         {
             var updateEntity = _unitOfWork.GetRepository<Volunteer>().GetById(dto.VolunteerId);
-            if (updateEntity != null)
-            {
-                _unitOfWork.GetRepository<Volunteer>().Update(_mapper.Map<Volunteer>(dto), updateEntity);
-                _unitOfWork.Save();
-            }
+            _unitOfWork.GetRepository<Volunteer>().Update(_mapper.Map<Volunteer>(dto), updateEntity);
+            _unitOfWork.Save();
+
         }
 
 

@@ -17,15 +17,12 @@ namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Concre
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly IDonorDal _donorDal;
-
-
-
-        public DonorManager(IUnitOfWork unitOfWork, IMapper mapper, IDonorDal donorDal)
+ 
+        public DonorManager(IUnitOfWork unitOfWork, IMapper mapper )
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _donorDal = donorDal;
+          
         }
 
         public void Create(DonorCreateDto dto)

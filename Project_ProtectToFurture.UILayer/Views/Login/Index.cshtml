@@ -20,6 +20,9 @@ Author URL: http://w3layouts.com
 
 	<!-- Style -->
 	<link rel="stylesheet" href="~/Login/css/style.css" type="text/css" media="all" />
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="~/lib/jquery/dist/jquery.js"></script>
 </head>
 
 <body>
@@ -47,13 +50,13 @@ Author URL: http://w3layouts.com
 							<span class="checkmark"></span>
 							<p class="remember">Beni Hatırla</p>
 						</label>
-						<button type="submit" class="btn btn-primary theme-button mt-4">Giriş Yap</button>
+						<button type="submit" class="btn btn-primary theme-button mt-4" onclick="onay()">Giriş Yap</button>
 						<div class="new-signup">
 							<a href="#reload" class="signuplink"></a>
 						</div>
 						<div asp-validation-summary="ModelOnly" class="text-danger" style="color:red"></div>
 					</form>
-					<p class="signup">Henüz bir hesabınız yok mu? <a href="/Register/Index" class="signuplink">Kayıt Ol</a></p>
+					<p class="signup"> <a href="/ForgotPassword/Index" class="signuplink">Şifremi Unuttum!</a></p>
 				</div>
 			</div>
 		</div>
@@ -68,7 +71,11 @@ Author URL: http://w3layouts.com
 		<!-- //copyright -->
 	</section>
 
-	<!-- /login form -->
+	<script>
+		function onay() {
+			swal("Good job!", "You clicked the button!", "success");
+		}
+	</script>
 </body>
 
 </html>

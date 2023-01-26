@@ -1,0 +1,38 @@
+﻿@model List<CampaignListDto>
+@{
+    ViewData["Title"] = "CampaignList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int sayac = 0;
+}
+
+<h1>Kampanya Listesi</h1>
+
+<table class="table  table-bordered">
+    <tr>
+        <th>No</th>
+        <th>Kampanya İsmi</th>
+        <th>Açıklaması</th>    
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detay</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        sayac++;
+            <tr>
+                <td>@sayac</td>
+                <td>@item.CampaignName</td>      
+                <td>@item.CampaignDescription.Substring(0,5)...</td>
+
+            <td><a href="/Admin/Campaign/CampaignDelete/@item.CampaignId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Admin/Campaign/CampaignUpdate/@item.CampaignId" class="btn btn-success">Guncelle</a></td>
+            <td><a href="/Admin/Campaign/GetById/@item.CampaignId" class="btn btn-warning" target="_blank">Detay</a></td>
+            </tr>
+
+    }
+
+</table>
+<div>
+    <a href="/Admin/Campaign/CampaignAdd" class="btn btn-primary">Kampanya Ekle</a>
+</div>
+

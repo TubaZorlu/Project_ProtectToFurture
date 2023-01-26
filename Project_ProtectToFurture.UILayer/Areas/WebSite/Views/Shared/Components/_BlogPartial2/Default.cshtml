@@ -1,0 +1,45 @@
+﻿@model List<BlogListDto>
+
+
+<div class="w3lspvt-about-row border-top row text-center pt-md-0 pt-5 mt-md-0 mt-5">
+	@foreach (var item in Model)
+	{
+		if (item.Title.Contains("Denizlerdeki Plastik"))
+		{
+			<div class="col-lg-4 col-sm-6 w3lspvt-about-grids">
+				<div class="p-md-5 p-sm-3 col-label">
+					<span class="fa fa-tint" data-blast="borderColor"></span>
+					<h4 class="mt-2 mb-3"><a href="@item.ImageUrl" target="_blank" data-blast="color" style="text-decoration:underline">@item.Title</a></h4>
+					<p>@item.Description.Substring(0,80)</p>
+				</div>
+			</div>
+		}
+
+		if (item.Title.Contains("İklim Ve Yaban Hayat"))
+		{
+			<div class="col-lg-4 col-sm-6 w3lspvt-about-grids mt-lg-0 mt-md-3 border-left border-right pt-sm-0 pt-5">
+				<div class="p-md-5 p-sm-3 col-label">
+					<span class="fa fa-handshake-o" data-blast="borderColor">
+					</span>
+					<h4 class="mt-2 mb-3"><a href="@item.ImageUrl" target="_blank" data-blast="color" style="text-decoration:underline">@item.Title</a></h4>
+					<p>@item.Description.Substring(0,80)</p>
+				</div>
+			</div>
+		}
+
+
+		if (item.Title.Contains("Kömür Teknolojisi"))
+		{
+			<div class="col-lg-4 w3lspvt-about-grids pt-md-0 pt-5">
+				<div class="p-md-5 p-sm-3 col-label">
+					<span class="fa fa-bar-chart" data-blast="borderColor"></span>
+					<h4 class="mt-2 mb-3"><a href="@item.ImageUrl" target="_blank" data-blast="color" style="text-decoration:underline">@item.Title</a>  </h4>
+					<p>@item.Description.Substring(0,80)</p>
+				</div>
+			</div>
+		}
+
+
+
+	}
+</div>

@@ -3,6 +3,7 @@
 namespace Project_ProtectToFurture.UILayer.Areas.WebSite.Controllers
 {
 	[Area("WebSite")]
+
 	public class DefaultController : Controller
 	{
 		public IActionResult Index()

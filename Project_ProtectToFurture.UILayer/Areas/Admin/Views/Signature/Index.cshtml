@@ -1,0 +1,69 @@
+﻿
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"> </script>
+
+<h1>İmza Kampanyası İstatisktikleri</h1>
+
+@section Scripts
+	{
+
+	<script type="text/javascript">
+
+		$(document).ready(() => {
+
+			var signatureCampaignList = new Array();
+
+			signatureCampaignList.push(["Kampanya", "Imza Sayısı"])
+
+			var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:44336/SignatureHub").build();
+
+
+			connection.start().then(() => {
+
+				connection.invoke("GetSignatureList");
+			}).catch(err => {
+
+				console.log(err);
+			})
+
+			connection.on("ReceiveList", (signatureList) => {
+				signatureCampaignList = signatureCampaignList.splice(0, 1);
+				signatureList.forEach((item) => {
+					signatureCampaignList.push([item.name, parseInt(item.counts)])
+
+				})
+
+				google.charts.load('current', { 'packages': ['corechart'] });
+				google.charts.setOnLoadCallback(drawChart);
+
+			})
+
+
+			function drawChart() {
+				var data = google.visualization.arrayToDataTable(signatureCampaignList);
+				var options = {
+					title: 'İmza Kampanyası Grafiği',
+					curveType: 'none',
+					legend: { position: 'bottom' }
+				};
+				var chart = new google.visualization.ColumnChart(document.getElementById('curve_chart'));
+
+				chart.draw(data, options);
+			}
+
+
+		})
+	</script>
+
+
+	}
+
+
+<div id="curve_chart" style="width:1200px; height:800px"></div>

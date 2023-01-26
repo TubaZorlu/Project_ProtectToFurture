@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Deneme";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Deneme Sayfası</h1>
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+@section Scripts
+	{
+
+	<script type="text/javascript">
+
+		$(document).ready(() => {
+			var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:44336/MyHub").build();
+
+			$("#conStatus").text(connection.connectionState);
+
+			connection.start().then(() => {
+				$("#conStatus").text(connection.connectionState);
+
+			}).catch((err) => { console.log(err) });
+
+
+
+		})
+
+	</script>
+}
+<div class="row">
+	<div class="col-md-8 offset-2">
+		<div class="alert alert-info mt-2">
+			<div class="float-left">
+				Baglatın durumu :<strong id="conStatus"></strong>
+				,client Sayısı :<strong id="clientCount"></strong>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>

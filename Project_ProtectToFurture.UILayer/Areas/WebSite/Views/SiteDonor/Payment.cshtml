@@ -1,0 +1,105 @@
+﻿@{
+	Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>Snow Login form Responsive Widget Template : W3Layouts</title>
+
+	<!-- Meta tags -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<!-- Style -->
+	<link rel="stylesheet" href="~/Login/css/style.css" type="text/css" media="all" />
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+</head>
+
+<body>
+	<!-- login form -->
+	<section class="w3l-login">
+		<div class="overlay">
+			<div class="wrapper">
+				<div class="logo">
+					<a class="brand-logo" href="index.html"></a>
+				</div>
+				<div class="form-section">
+					<h3>Ödeme Ekranı</h3>
+
+
+					<div class="form-input">
+
+						<input type="text" name="" placeholder="Adınız Soyadınız" id="name">
+
+					</div>
+
+					<div class="form-input">
+						<input type="text" name="" placeholder="Kart No" id="number">
+
+					</div>
+					<div class="form-input">
+						<input type="text" name="" placeholder="01/2023" id="lastdate">
+
+					</div>
+
+					<div class="form-input">
+						<input type="text" name="" placeholder="000" id="cvv">
+
+					</div>
+					<button type="submit" class="btn btn-primary theme-button mt-4" onclick="onay()">Onayla</button>
+					<a href="/WebSite/Default/Index" class="btn btn-primary theme-button mt-4" style="width:300px; text-align:center">Geri Dön</a>
+					<div class="new-signup">
+						<a href="#reload" class="signuplink"></a>
+					</div>
+					<div asp-validation-summary="ModelOnly" class="text-danger" style="color:red"></div>
+
+
+				</div>
+			</div>
+		</div>
+		<div id='stars'></div>
+		<div id='stars2'></div>
+		<div id='stars3'></div>
+
+		<!-- copyright -->
+		<div class="copy-right">
+		</div>
+		<!-- //copyright -->
+	</section>
+
+	<script>
+		function onay() {
+			debugger;
+			var nameText = document.getElementById("name").value;
+			var numberText = document.getElementById("number").value;
+			var dateText = document.getElementById("lastdate").value;
+			var cvvText = document.getElementById("cvv").value;
+			if (nameText != null && nameText != "" && numberText != null && numberText != "" && dateText != null && dateText != "" && cvvText != null && cvvText != "") {
+
+				swal({
+					title: "Teşekkürler!",
+					text: "Bağış işlemi başarıyla gerçekleşti!",
+					icon: "success",
+					button: "OK!",
+				});
+			}
+			else {
+				swal({
+					title: "Başarısız!",
+					text: "Tüm alanlar dolu olmalıdır!",
+					icon: "warning",
+					button: "OK!",
+				});
+			}
+
+		}
+	</script>
+</body>
+
+</html>

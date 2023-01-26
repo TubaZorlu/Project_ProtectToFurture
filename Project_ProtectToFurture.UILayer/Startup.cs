@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -38,7 +39,11 @@ namespace Project_ProtectToFurture.UILayer
 
 			//services.AddScoped<GetAboutByIdQueryHandler>();
 
-			services.AddIdentity<AppUser, AppRole>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<ProjectContext>();
+			services.AddIdentity<AppUser, AppRole>(config =>
+			{
+				config.SignIn.RequireConfirmedEmail = true;			
+
+			}).AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<ProjectContext>().AddTokenProvider<DataProtectorTokenProvider<AppUser>>(TokenOptions.DefaultProvider);
 
 
 			services.ConfigureApplicationCookie(opt =>

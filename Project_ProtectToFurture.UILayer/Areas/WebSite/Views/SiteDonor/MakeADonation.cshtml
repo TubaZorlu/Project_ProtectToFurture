@@ -1,0 +1,104 @@
+﻿@model DonorCreateDto
+@{
+	Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bağış Sayfası</title>
+	<!-- meta_tags-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Library Membership form A Flat Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		   function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- Meta_tag_Keywords-->
+	<!--css_files-->
+	<link rel="stylesheet" href="~/Donation/css/jquery-ui.css" />
+	<link href="~/Donation/css/style.css" rel="stylesheet" type="text/css" media="all" /><!--stylesheet-->
+	<link rel="stylesheet" href="~/Donation/css/font-awesome.css"><!--font_wesome_icons-->
+	<link href="//fonts.googleapis.com/css?family=PT+Sans+Caption" rel="stylesheet"><!--online_fonts-->
+	<link href="//fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet"><!--online_fonts-->
+	<!--//css_files-->
+</head>
+<body>
+
+	<form method="post">
+		<div class="w3l-head">
+			<h1 style="margin-top:60px">Lüffen Bilgilerinizi Giriniz</h1>
+		</div>
+		<div class="w3ls-form">
+			<div class="w3l-last-grid1">
+				<div class="w3l-grid1">
+					<label class="text">Adınız</label>
+					<div class="w3l-div">
+						<i class="fa fa-user" aria-hidden="true"></i>
+						<input type="text" asp-for="DonorName" placeholder="Adınız" />
+						<span asp-validation-for="DonorName" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+			<div class="w3l-grid2">
+				<label class="text">Soy Adınız</label>
+				<div class="w3l-div">
+					<i class="fa fa-user" aria-hidden="true"></i>
+					<input type="text" asp-for="DonorSurname" placeholder="Soy Adınız" />
+					<span asp-validation-for="DonorSurname" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="clear"></div>
+
+			<div class="w3l-last-grid1">
+				<div class="w3l-grid1">
+					<label class="text">Email</label>
+					<div class="w3l-div">
+						<i class="fa fa-envelope-o" aria-hidden="true"></i>
+						<input type="email" asp-for="DonorEmail" placeholder="Email Adresiniz" />
+						<span asp-validation-for="DonorEmail" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="w3l-grid2">
+					<label class="text">Telefon Numaranız</label>
+					<div class="w3l-div">
+						<i class="fa fa-phone" aria-hidden="true"></i>
+						<input type="text" asp-for="DonorPhone" placeholder="Telefon Numaranız" />
+						<span asp-validation-for="DonorPhone" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+
+			<div class="w3l-grid2">
+				<label class="text">Şehir</label>
+				<div class="w3l-div">
+					<i class="fa fa-map-marker" aria-hidden="true"></i>
+					<input type="text" asp-for="DonorCity" placeholder="Şehir" />
+					<span asp-validation-for="DonorCity" class="text-danger"></span>
+				</div>
+			</div>
+
+			<div class="w3l-grid1">
+				<label class="text">Tutar</label>
+				<div class="w3l-div">
+					<i class="fa fa-money" aria-hidden="true"></i>
+					<input type="text" asp-for="Amout" placeholder="Lütfen Bağış Tutarını Giriniz" />
+					<span asp-validation-for="Amout" class="text-danger"></span>
+				</div>
+			</div>
+
+			<div class="w3ls-submit">
+
+				<input type="submit" value="Bağış Yap" asp-action="MakeADonation" asp-controller="SiteDonor">
+			</div>
+
+		</div>
+
+	</form>
+
+
+</body>
+</html>
