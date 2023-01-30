@@ -7,9 +7,11 @@ using Project_ProtectToFurture.BusinessLayer.Mapping.ContactMapping;
 using Project_ProtectToFurture.BusinessLayer.Mapping.DonorMapping;
 using Project_ProtectToFurture.BusinessLayer.Mapping.FeatureMapping;
 using Project_ProtectToFurture.BusinessLayer.Mapping.ProjectMapping;
+using Project_ProtectToFurture.BusinessLayer.Mapping.SignatureMapping;
 using Project_ProtectToFurture.BusinessLayer.Mapping.VolunteerMapping;
 using Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Abstract;
 using Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Concrete;
+using Project_ProtectToFurture.BusinessLayer.ValidationRules.AboutValidationRules;
 using Project_ProtectToFurture.BusinessLayer.ValidationRules.BlogValidationRules;
 using Project_ProtectToFurture.BusinessLayer.ValidationRules.CampaignValidationRules;
 using Project_ProtectToFurture.BusinessLayer.ValidationRules.ContactValitaionRules;
@@ -24,6 +26,7 @@ using Project_ProtectToFurture.DataAccessLayer.UnitOfWork;
 using Project_ProtectToFurture.DTOLayer.BlogDtos;
 using Project_ProtectToFurture.DTOLayer.CampaignDtos;
 using Project_ProtectToFurture.DTOLayer.ContactDtos;
+using Project_ProtectToFurture.DTOLayer.CQRS.Commands.AboutCommands;
 using Project_ProtectToFurture.DTOLayer.DonorDto;
 using Project_ProtectToFurture.DTOLayer.FeatureDtos;
 using Project_ProtectToFurture.DTOLayer.ProjectDtos;
@@ -60,6 +63,9 @@ namespace Project_ProtectToFurture.BusinessLayer.DIContainer
             services.AddScoped<ICampaignDal,EfCampaignDal>();
             services.AddScoped<ICampaignService,CampaignManager>();
 
+            services.AddScoped<ISignatureDal,EfSignatureDal>();
+            services.AddScoped<ISignatureService,SignatureManager>();
+
             var configuration = new MapperConfiguration(opt =>
             {
                 opt.AddProfile(new BlogProfile());
@@ -69,12 +75,15 @@ namespace Project_ProtectToFurture.BusinessLayer.DIContainer
                 opt.AddProfile(new ContactProfile());
                 opt.AddProfile(new DonorProfile());
                 opt.AddProfile(new CampaignProfile());
+                opt.AddProfile(new SignatureProfile());
 
             });
             var mapper = configuration.CreateMapper();
 
             services.AddSingleton(mapper);
 
+            services.AddTransient<IValidator<CreateAboutCommand>, CreateAboutValidator>();
+            services.AddTransient<IValidator<UpdateAboutCommand>, UpdateAboutValidator>();
 
             services.AddTransient<IValidator<BlogCreateDto>, CreateBlogValidator>();
             services.AddTransient<IValidator<BlogUpdateDto>, UpdateBlogValidator>();

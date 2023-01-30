@@ -1,96 +1,62 @@
-﻿
+﻿@model List<FeatureListDto>
+
+
 <section class="blog_w3ls pb-lg-5 pb-4" id="posts">
 	<div class="container py-sm-5 py-4">
 		<div class="title-desc text-center pb-sm-3 mb-lg-5">
-			<h3 class="main-title-w3pvt">recent blog</h3>
-			<p>Helping animals & working on environmental issues.</p>
+			<h3 class="main-title-w3pvt">Son Bloglar</h3>
+			<p>Doğanın ne kadar güçlü, ne kadar yüce olduğunu fark etmek, zamansızlık hissiyle birleşir</p>
 		</div>
 		<div class="row mt-4">
-			<!-- blog grid -->
-			<div class="col-lg-4 col-md-6 mt-sm-0 mt-4">
-				<div class="card">
-					<div class="card-header p-0 position-relative">
-						<a href="#exampleModal2" data-toggle="modal" aria-pressed="false" data-target="#exampleModal2"
-						   role="button">
-							<img class="card-img-bottom" src="~/Site/images/g1.jpg" alt="Card image cap">
-							<span class="fa fa-user post-icon bg-theme" aria-hidden="true" data-blast="bgColor"></span>
 
-						</a>
-					</div>
-					<div class="card-body">
-						<h5 class="blog-title card-title font-weight-bold">
-							<a href="#exampleModal2" data-toggle="modal" aria-pressed="false" data-target="#exampleModal2"
-							   role="button">Cras ultricies ligula sed.</a>
-						</h5>
-						<p>
-							At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit
-							ametLorem ipsum dolor sit amet,sed diam nonumy.
-						</p>
-						<label class="mt-2"> <span class="fa fa-calendar mr-3"></span>08.10.2018</label>
-						<button type="button" class="btn blog-btn wthree-bnr-btn" data-toggle="modal" aria-pressed="false"
+			@foreach (var item in Model)
+			{
+				<div class="col-lg-4 col-md-6 mt-sm-0 mt-4">
+					<div class="card">
+						<div class="card-header p-0 position-relative">
+							<a >
+								<img class="card-img-bottom" src="@item.ImagerUrl" alt="Card image cap">
+								<span class="fa fa-user post-icon bg-theme" aria-hidden="true" data-blast="bgColor"></span>
+
+							</a>
+						</div>
+						<div class="card-body">
+							<h5 class="blog-title card-title font-weight-bold">
+								<a href="#exampleModal2" data-toggle="modal" aria-pressed="false" data-target="#exampleModal2"
+							   role="button">@item.Title</a>
+							</h5>
+							<p>
+								@item.Descriptin.Substring(0,100)...
+							</p>
+							<label class="mt-2"> <span class="fa fa-calendar mr-3"></span>@item.CreatedDate.ToShortDateString()</label>
+							@if (item.Title == "Kızıl Tilki")
+							{
+								<button type="button" class="btn blog-btn wthree-bnr-btn" data-toggle="modal" aria-pressed="false"
 								data-target="#exampleModal2">
-							Read more
-						</button>
-					</div>
-				</div>
-			</div>
-			<!-- //blog grid -->
-			<!-- blog grid -->
-			<div class="col-lg-4 col-md-6 mt-md-0 mt-sm-5 mt-4">
-				<div class="card">
-					<div class="card-header p-0 position-relative">
-						<a href="#exampleModal3" data-toggle="modal" aria-pressed="false" data-target="#exampleModal3"
-						   role="button">
-							<img class="card-img-bottom" src="~/Site/images/g2.jpg" alt="Card image cap">
-							<span class="fa fa-user post-icon bg-theme" aria-hidden="true" data-blast="bgColor"></span>
-						</a>
-					</div>
-					<div class="card-body">
-						<h5 class="blog-title card-title font-weight-bold">
-							<a href="#exampleModal3" data-toggle="modal" aria-pressed="false" data-target="#exampleModal3"
-							   role="button">magna porta auris.</a>
-						</h5>
-						<p>
-							At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit
-							ametLorem ipsum dolor sit amet,sed diam nonumy.
-						</p>
-						<label class="mt-2"> <span class="fa fa-calendar mr-3"></span>02.11.2018</label>
-						<button type="button" class="btn blog-btn wthree-bnr-btn" data-toggle="modal" aria-pressed="false"
+									Daha Fazla
+								</button>
+							}
+							@if (item.Title == "Anadolu Sincabı")
+							{
+								<button type="button" class="btn blog-btn wthree-bnr-btn" data-toggle="modal" aria-pressed="false"
 								data-target="#exampleModal3">
-							Read more
-						</button>
-					</div>
-				</div>
-			</div>
-			<!-- //blog grid -->
-			<!-- blog grid -->
-			<div class="col-lg-4 col-md-6 mt-lg-0 mt-4 mx-auto">
-				<div class="card">
-					<div class="card-header p-0  position-relative">
-						<a href="#exampleModal4" data-toggle="modal" aria-pressed="false" data-target="#exampleModal4"
-						   role="button">
-							<img class="card-img-bottom" src="~/Site/images/g3.jpg" alt="Card image cap">
-							<span class="fa fa-user post-icon bg-theme" aria-hidden="true" data-blast="bgColor"></span>
-						</a>
-					</div>
-					<div class="card-body">
-						<h5 class="blog-title card-title font-weight-bold">
-							<a href="#exampleModal4" data-toggle="modal" aria-pressed="false" data-target="#exampleModal4"
-							   role="button">Cras ultricies ligula sed.</a>
-						</h5>
-						<p>
-							At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit
-							ametLorem ipsum dolor sit amet,sed diam nonumy.
-						</p>
-						<label class="mt-2"> <span class="fa fa-calendar mr-3"></span>10.11.2018</label>
-						<button type="button" class="btn blog-btn wthree-bnr-btn" data-toggle="modal" aria-pressed="false"
+									Daha Fazla
+								</button>
+							}
+							@if (item.Title == "Alageyik")
+							{
+								<button type="button" class="btn blog-btn wthree-bnr-btn" data-toggle="modal" aria-pressed="false"
 								data-target="#exampleModal4">
-							Read more
-						</button>
+									Daha Fazla
+								</button>
+							}
+
+						</div>
 					</div>
 				</div>
-			</div>
-			<!-- //blog grid -->
+			}
+
+
 		</div>
 	</div>
 </section>
@@ -195,75 +161,84 @@
 	</div>
 </div>
 <!-- // register -->
-<!-- blog modal1 -->
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+@foreach (var item in Model)
+{
+	if (item.Title == "Kızıl Tilki")
+	{
+		<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+	 aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header bg-theme">
+						<h5 class="modal-title" id="exampleModalLabel2">@item.Title</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body text-center">
+						<img src="@item.ImagerUrl" class="img-fluid" alt="" />
+						<p class="text-left my-4">
+							@item.Descriptin
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	}
+
+
+
+	if (item.Title == "Anadolu Sincabı")
+	{
+		<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3"
+	 aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header bg-theme">
+						<h5 class="modal-title" id="exampleModalLabel3">@item.Title</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body text-center">
+						<img src="@item.ImagerUrl" class="img-fluid" alt="" />
+						<p class="text-left my-4">
+							@item.Descriptin
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+
+
+
+	if (item.Title == "Alageyik")
+	{
+		<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4"
 	 aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header bg-theme">
-				<h5 class="modal-title" id="exampleModalLabel2">Cras ultricies ligula sed.</h5>
+				<h5 class="modal-title" id="exampleModalLabel4">@item.Title</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body text-center">
-				<img src="~/Site/images/g1.jpg" class="img-fluid" alt="" />
+				<img src="@item.ImagerUrl" class="img-fluid" alt="" />
 				<p class="text-left my-4">
-					Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet
-					nisl
-					tempus convallis quis ac
-					lectus. Cras ultricies ligula sed magna dictum porta.
+					@item.Descriptin
 				</p>
 			</div>
 		</div>
 	</div>
 </div>
-<!-- //blog modal1 -->
-<!-- blog modal2 -->
-<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3"
-	 aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header bg-theme">
-				<h5 class="modal-title" id="exampleModalLabel3">Cras ultricies ligula sed.</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body text-center">
-				<img src="~/Site/images/g2.jpg" class="img-fluid" alt="" />
-				<p class="text-left my-4">
-					Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet
-					nisl
-					tempus convallis quis ac
-					lectus. Cras ultricies ligula sed magna dictum porta.
-				</p>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- //blog modal2 -->
-<!-- blog modal3 -->
-<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel4"
-	 aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header bg-theme">
-				<h5 class="modal-title" id="exampleModalLabel4">Cras ultricies ligula sed magna.</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body text-center">
-				<img src="~/Site/images/g3.jpg" class="img-fluid" alt="" />
-				<p class="text-left my-4">
-					Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet
-					nisl
-					tempus convallis quis ac
-					lectus. Cras ultricies ligula sed magna dictum porta.
-				</p>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- //blog modal3-->
+
+	}
+
+}
+
+
+

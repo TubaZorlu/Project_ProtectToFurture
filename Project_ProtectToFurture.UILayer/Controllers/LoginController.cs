@@ -29,58 +29,53 @@ namespace Project_ProtectToFurture.UILayer.Controllers
 			var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.Remember, true);
 			var user = await _userManager.FindByNameAsync(model.UserName);
 
-			if (user !=null)
+
+
+			if (ModelState.IsValid && user.EmailConfirmed == true)
 			{
-				if (ModelState.IsValid && user.EmailConfirmed == true)
+
+
+				var roles = await _userManager.GetRolesAsync(user);
+
+
+				if (roles.Contains("Admin"))
 				{
-					//tT415441??
-
-					var roles = await _userManager.GetRolesAsync(user);
-
-
-					if (roles.Contains("Admin"))
+					if (result.Succeeded)
 					{
-						if (result.Succeeded)
-						{
 
-							return RedirectToAction("GetAll", "About", new { area = "Admin" });
-
-						}
-
-						ModelState.AddModelError("", "Kullanıcı adı veya şifreniz hatalı");
-
-					}
-					else
-					{
-						if (result.Succeeded)
-						{
-
-							return RedirectToAction("Index", "Default", new { area = "WebSite" });
-
-						}
-
+						return RedirectToAction("GetAll", "About", new { area = "Admin" });
 
 					}
 
+					ModelState.AddModelError("", "Kullanıcı adı veya şifreniz hatalı");
 
 				}
+				else
+				{
+					if (result.Succeeded)
+					{
+
+						return RedirectToAction("Index", "Default", new { area = "WebSite" });
+
+					}
+					ModelState.AddModelError("", "Kullanıcı adı veya şifreniz hatalı");
+
+				}
+
+
 			}
 
-			
+
 
 			ModelState.AddModelError("", "Kullanıcı adı veya şifreniz hatalı");
 			return View(model);
 		}
 
-		public async Task<IActionResult> SignOut() 
+		public async Task<IActionResult> SignOutt()
 		{
 			await _signInManager.SignOutAsync();
 			return RedirectToAction("Index");
 		}
 
-		public IActionResult Deneme() 
-		{
-			return View();
-		}
 	}
 }

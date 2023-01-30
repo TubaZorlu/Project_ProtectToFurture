@@ -13,18 +13,15 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
 	public class VolunteerController : Controller
 	{
 		private readonly IVolunteerService _volunteerService;
-		private readonly IValidator<VolunteerUpdateDto> _updateValidator;
 
-		public VolunteerController(IVolunteerService volunteerService, IValidator<VolunteerUpdateDto> updateValidator)
+
+		public VolunteerController(IVolunteerService volunteerService)
 		{
 			_volunteerService = volunteerService;
-			_updateValidator = updateValidator;
+			
 		}
 
-		public IActionResult Index()
-		{
-			return View();
-		}
+		
 
 		public IActionResult VolunteerList()
 		{
@@ -42,6 +39,7 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
 		public IActionResult VolunteerDelete(int id)
 		{
 			var value = _volunteerService.GetById<VolunteerUpdateDto>(id);
+
 			if (value.Status==true)
 			{
 				value.Status = false;
@@ -50,7 +48,9 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
 			{
 				value.Status=true;
 			}
+
 			_volunteerService.Update(value);
+
 			return RedirectToAction("VolunteerList");
 		}
 
@@ -59,24 +59,18 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
 			var result = _volunteerService.GetById<VolunteerUpdateDto>(id);
 			return View(result);
 		}
+
 		[HttpPost]
 		public IActionResult VolunteerUpdate(VolunteerUpdateDto dto)
 		{
-			var validationResult = _updateValidator.Validate(dto);
-
-			if (validationResult.IsValid)
+			
+			if (ModelState.IsValid)
 			{
 				_volunteerService.Update(dto);
 				return RedirectToAction("VolunteerList");
 			}
-			else
-			{
-				foreach (var item in validationResult.Errors)
-				{
-					ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-				}
-				return View(dto);
-			}
+		
+			return View(dto);
 		}
 
 

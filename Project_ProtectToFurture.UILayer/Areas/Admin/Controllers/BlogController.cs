@@ -14,21 +14,14 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
 	public class BlogController : Controller
 	{
 		private readonly IBlogService _blogService;
-		private readonly IValidator<BlogCreateDto> _createValidator;
-		private readonly IValidator<BlogUpdateDto> _updateValidator;
 
-		public BlogController(IBlogService blogService, IValidator<BlogCreateDto> createValidator, IValidator<BlogUpdateDto> updateValidator)
+		public BlogController(IBlogService blogService)
 		{
 			_blogService = blogService;
-			_createValidator = createValidator;
-			_updateValidator = updateValidator;
+	
 		}
 
-		public IActionResult Index()
-		{
-			return View();
-		}
-
+	
 
 		public IActionResult GetAll()
 		{
@@ -53,17 +46,13 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
 		public IActionResult BlogAdd(BlogCreateDto dto)
 		{
 
-			var validationResult = _createValidator.Validate(dto);
 
-			if (validationResult.IsValid)
+			if (ModelState.IsValid)
 			{
 				_blogService.Create(dto);
 				return RedirectToAction("GetAll");
 			}
-			foreach (var item in validationResult.Errors)
-			{
-				ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-			}
+		
 			return View(dto);
 		}
 
@@ -80,21 +69,14 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
 		public IActionResult BlogUpdate(BlogUpdateDto dto )
 		{ 
 
-			var validationResult = _updateValidator.Validate(dto);
-
-			if (validationResult.IsValid) 
+			if (ModelState.IsValid) 
 			{
 				_blogService.Update(dto);
 				return RedirectToAction("GetAll");
 			}
-			else
-			{
-				foreach (var item in validationResult.Errors)
-				{
-					ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-				}
-				return View(dto);
-			}
+		
+
+			return View(dto);
 		}
 
 		public IActionResult BlogDelete(int id)

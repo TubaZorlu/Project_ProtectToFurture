@@ -27,10 +27,13 @@ namespace Project_ProtectToFurture.UILayer.Controllers
 		public async  Task<IActionResult> Index(ForgotPasswordDto dto)
 		{
 			var user = await _userManager.FindByEmailAsync(dto.Email);
+
 			if (user != null)
 			{
 				var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
 				var passwordResetLink = Url.Action("ResetPassword", "ForgotPassword", new { email = dto.Email, token = token }, Request.Scheme);
+
 				return RedirectToAction("ForgotPasswordConfirmation", new { url = passwordResetLink, email = dto.Email });
 			}
 			return View();

@@ -20,6 +20,7 @@ namespace Project_ProtectToFurture.UILayer.Controllers
 
 		public IActionResult Index()
 		{
+
 			return View();
 		}
 

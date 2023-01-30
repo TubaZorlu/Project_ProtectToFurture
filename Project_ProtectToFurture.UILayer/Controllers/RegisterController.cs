@@ -26,6 +26,7 @@ namespace Project_ProtectToFurture.UILayer.Controllers
 		{
 			return View(new UserCreateDto());
 		}
+
 		[HttpPost]
 		public async Task<IActionResult> Index(UserCreateDto model)
 		{

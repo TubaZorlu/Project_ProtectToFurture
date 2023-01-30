@@ -22,11 +22,6 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
             _mediator = mediator;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-
-        }
 
         public async Task<IActionResult> GetAll()
         {
@@ -53,22 +48,13 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAbout(CreateAboutCommand command)
         {
-            var validator = new CreateAboutValidator();
-            ValidationResult result = validator.Validate(command);
-
-            if (result.IsValid)
+            
+            if (ModelState.IsValid)
             {
                 await _mediator.Send(command);
                 return RedirectToAction("GetAll");
             }
-            else
-            {
-                foreach (var item in result.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                }
-            }
-
+         
             return View();
 
 
@@ -87,22 +73,14 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateAbout(UpdateAboutCommand command)
         {
-            var validator = new UpdateAboutValidator();
-            ValidationResult result = validator.Validate(command);
+           
 
-            if (result.IsValid)
+            if (ModelState.IsValid)
             {
                 await _mediator.Send(command);
                 return RedirectToAction("GetAll");
             }
-            else
-            {
-                foreach (var item in result.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                }
-            }
-
+            
             return View();
 
 

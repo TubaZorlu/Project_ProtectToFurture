@@ -14,6 +14,8 @@ namespace Project_ProtectToFurture.DTOLayer.FeatureDtos
         public string Descriptin { get; set; }
         public DateTime CreatedDate { get; set; }
 
+		public string ImagerUrl { get; set; }
 
-    }
+
+	}
 }

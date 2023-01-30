@@ -15,19 +15,12 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
 	public class CampaignController : Controller
 	{
 		private readonly ICampaignService _campaignService;
-		private readonly IValidator<CampaignCreateDto> _createValidator;
-		private readonly IValidator<CampaignUpdateDto> _updateValidator;
+	
 
-		public CampaignController(ICampaignService campaignService, IValidator<CampaignUpdateDto> updateValidator, IValidator<CampaignCreateDto> createValidator)
+		public CampaignController(ICampaignService campaignService)
 		{
 			_campaignService = campaignService;
-			_updateValidator = updateValidator;
-			_createValidator = createValidator;
-		}
-
-		public IActionResult Index()
-		{
-			return View();
+			
 		}
 
 		public IActionResult CampaignList()
@@ -50,19 +43,13 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
 		[HttpPost]
 		public IActionResult CampaignAdd(CampaignCreateDto dto)
 		{
-			var validationResult = _createValidator.Validate(dto);
-			if (validationResult.IsValid)
+			
+			if (ModelState.IsValid)
 			{
 				_campaignService.Create(dto);
 				return RedirectToAction("CampaignList");
 			}
-			else
-			{
-				foreach (var item in validationResult.Errors)
-				{
-					ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-				}
-			}
+		
 			return View();
 		}
 
@@ -76,25 +63,15 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
 
 		[HttpPost]
 		public IActionResult CampaignUpdate(CampaignUpdateDto dto)
-		{
+		{			
 
-			var validationResult = _updateValidator.Validate(dto);
-
-			if (validationResult.IsValid)
+			if (ModelState.IsValid)
 			{
 				_campaignService.Update(dto);
 				return RedirectToAction("CampaignList");
 			}
-			else
-			{
-				foreach (var item in validationResult.Errors)
-				{
-					ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-				}
-				return View(dto);
-			}
-
-
+			
+			return View(dto);
 
 		}
 

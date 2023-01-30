@@ -35,11 +35,7 @@ namespace Project_ProtectToFurture.API.Hubs
 		public List<SignatureChart> GetSignatureChart()
 		{
 			List<SignatureChart> signatureList = new List<SignatureChart>();
-			
-			if (true)
-			{
-
-			}
+					
 
 			var campaignList = from detay in _projectContext.Signatures
 					group detay by detay.Campaign.CampaignName into Grup
@@ -62,44 +58,6 @@ namespace Project_ProtectToFurture.API.Hubs
 				signatureList.Add(sc);
 			}
 	
-
-			#region deneme
-			//using (var command = _projectContext.Database.GetDbConnection().CreateCommand())
-			//{
-			//	command.CommandText = "select CampaignName as Kampanya ,sum(SignatureCount ) as Toplam from Signatures join Campaigns on Signatures.CampaignId=Campaigns.CampaignId group by Campaigns.CampaignName";
-
-			//	command.CommandType = System.Data.CommandType.Text;
-
-			//	_projectContext.Database.OpenConnection();
-
-			//	using (var reader = command.ExecuteReader())
-			//	{
-			//		while (reader.Read())
-			//		{
-			//			SignatureChart signatureChart = new SignatureChart();
-			//			signatureChart.Name = reader.GetString(0);
-
-			//			for (int i = 0; i < count; i++)
-			//			{
-			//				signatureChart.Counts.Add(reader.GetInt32(i));
-			//			}
-
-			//			//Enumerable.Range(1, count).ToList().ForEach(x =>
-			//			//{
-			//			//	if (System.DBNull.Value.Equals(reader[x]))
-			//			//	{
-			//			//		signatureChart.Counts.Add(0);
-			//			//	}
-			//			//	else
-			//			//	{
-
-			//			//	}
-			//			//});
-
-			//			signatureList.Add(signatureChart);
-			//		}
-			//	} 
-			#endregion
 
 			return signatureList;
 		}

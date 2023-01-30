@@ -13,19 +13,11 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
     public class FeatureController : Controller
     {
         private readonly IFeatureService _featureService;
-        private readonly IValidator<FeatureCreateDto> _createValidator;
-        private readonly IValidator<FeatureUpdateDto> _updateValidator;
-
-        public FeatureController(IFeatureService featureService, IValidator<FeatureCreateDto> createValidator, IValidator<FeatureUpdateDto> updateValidator)
+     
+        public FeatureController(IFeatureService featureService)
         {
             _featureService = featureService;
-            _createValidator = createValidator;
-            _updateValidator = updateValidator;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
+            
         }
 
         public IActionResult FeatureList()
@@ -48,19 +40,13 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult FeatureAdd(FeatureCreateDto dto)
         {
-            var validationResult = _createValidator.Validate(dto);
-            if (validationResult.IsValid)
+            
+            if (ModelState.IsValid)
             {
                 _featureService.Create(dto);
                 return RedirectToAction("FeatureList");
             }
-            else
-            {
-                foreach (var item in validationResult.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                }
-            }
+            
             return View();
         }
 
@@ -73,27 +59,16 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
 
         [HttpPost]
         public IActionResult FeatureUpdate(FeatureUpdateDto dto)
-        {
+        {     
 
-            var validationResult = _updateValidator.Validate(dto);
-
-            if (validationResult.IsValid)
+            if (ModelState.IsValid)
             {
                 _featureService.Update(dto);
                 return RedirectToAction("FeatureList");
             }
-            else
-            {
-                foreach (var item in validationResult.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                }
-                return View(dto);
-            }
-
-
-
-        }
+           
+			return View(dto);
+		}
 
 		public IActionResult FeatureDelete(int id)
 		{

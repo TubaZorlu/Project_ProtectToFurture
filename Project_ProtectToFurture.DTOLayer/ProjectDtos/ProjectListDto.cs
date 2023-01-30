@@ -16,6 +16,7 @@ namespace Project_ProtectToFurture.DTOLayer.ProjectDtos
         public string Area { get; set; }
         public string Details { get; set; }
         public Donor Donor { get; set; }
+		public bool Status { get; set; }
 
-    }
+	}
 }

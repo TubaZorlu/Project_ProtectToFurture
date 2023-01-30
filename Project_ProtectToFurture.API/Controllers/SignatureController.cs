@@ -26,8 +26,7 @@ namespace Project_ProtectToFurture.API.Controllers
 		public async Task<IActionResult> SaveCampaign(Signature signature)
 		{
 			await _signatureService.SaveData(signature);
-		//	IQueryable<Signature> signatures = _signatureService.GetList
-		//	
+			
 			return Ok(_signatureService.GetSignatureChart());
 		}
 
@@ -48,7 +47,7 @@ namespace Project_ProtectToFurture.API.Controllers
                         var signature = new Signature
                         {
                             CampaignId = i,
-                            SignatureCount = rnd.Next(10, 100),
+                            SignatureCount = rnd.Next(100, 300),
                             SignatureDate = DateTime.Now.AddDays(i)
                         };
 

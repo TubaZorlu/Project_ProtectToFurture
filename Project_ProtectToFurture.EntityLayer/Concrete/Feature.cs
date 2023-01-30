@@ -12,6 +12,7 @@ namespace Project_ProtectToFurture.EntityLayer.Concrete
 		public int FeatureId { get; set; }
 		public string Title { get; set; }
 		public string Descriptin  { get; set; }
+		public string ImagerUrl  { get; set; }
 		public DateTime CreatedDate  { get; set; } =DateTime.Now;
 		public bool Status { get; set; } = true;
 

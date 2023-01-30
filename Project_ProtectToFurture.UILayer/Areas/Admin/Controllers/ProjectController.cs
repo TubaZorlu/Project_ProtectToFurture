@@ -12,21 +12,14 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
     public class ProjectController : Controller
     {
         private readonly IProjectService _projectService;
-        private readonly IValidator<ProjectCreateDto> _createValidator;
-        private readonly IValidator<ProjectUpdateDto> _updateValidator;
-
-        public ProjectController(IProjectService projectService, IValidator<ProjectCreateDto> createValidator, IValidator<ProjectUpdateDto> updateValidator)
+       
+        public ProjectController(IProjectService projectService)
         {
             _projectService = projectService;
-            _createValidator = createValidator;
-            _updateValidator = updateValidator;
+           
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+     
         public IActionResult ProjectList()
         {
             var result = _projectService.GetAll();
@@ -55,22 +48,13 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
 
         [HttpPost]
         public IActionResult ProjectAdd(ProjectCreateDto dto)
-        {
-            var validationResult = _createValidator.Validate(dto);
-
-            if (validationResult.IsValid)
+        {    
+            if (ModelState.IsValid)
             {
                 _projectService.Create(dto);
                 return RedirectToAction("ProjectList");
             }
-            else
-            {
-                foreach (var item in validationResult.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                }
-            }
-
+           
             return View(dto);
         }
 
@@ -85,21 +69,13 @@ namespace Project_ProtectToFurture.UILayer.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult ProjectUpdate(ProjectUpdateDto dto)
         {
-            var validationResult = _updateValidator.Validate(dto);
-            if (validationResult.IsValid)
+           
+            if (ModelState.IsValid)
             {
                 _projectService.Update(dto);
                 return RedirectToAction("ProjectList");
             }
-            else
-            {
-                foreach (var item in validationResult.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                }
-
-            }
-
+          
             return View(dto);
         }
 

@@ -84,14 +84,7 @@ namespace Project_ProtectToFurture.BusinessLayer.RepositoryDessignPattern.Concre
 			if (updateEntity != null)
 			{
 			
-				_unitOfWork.GetRepository<Blog>().Update(_mapper.Map<Blog>(dto), updateEntity);
-
-				//var extension = Path.GetExtension(dto.ImageUrl.FileName);
-				//var fileName = Guid.NewGuid() + extension;
-				//var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/pdf", fileName);
-				//var stream = new FileStream(location, FileMode.Create);
-				//dto.ImageUrl.CopyTo(stream);
-				//updateEntity.ImageUrl = "/pdf/" + fileName;
+				_unitOfWork.GetRepository<Blog>().Update(_mapper.Map<Blog>(dto), updateEntity);				
 				_unitOfWork.Save();
 			}
 
