@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Project_ProtectToFurture.UILayer.Areas.WebSite.Controllers
 {
@@ -8,6 +9,8 @@ namespace Project_ProtectToFurture.UILayer.Areas.WebSite.Controllers
 	{
 		public IActionResult Index()
 		{
+			
+
 			return View();
 		}
 	}

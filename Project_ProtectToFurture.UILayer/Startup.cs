@@ -58,25 +58,7 @@ namespace Project_ProtectToFurture.UILayer
 				opt.AccessDeniedPath = new PathString("/WebSite/Default/Index/");
 			});
 
-			//jwt token konfigürayonu 
-			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>{
-
-				//jwt https ile çalışır, http ile çalıştığım için false çektim 
-				opt.RequireHttpsMetadata = false;
-				opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-				{
-					ValidIssuer = "http://localhost",
-					ValidAudience = "http://localhost",
-					//3 tip şifreleme var simetrik asimetrik ve hash şeklinde
-					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Zorluzorluzorlu1.")),
-					ValidateIssuerSigningKey = true,
-					ValidateLifetime= true,
-					ClockSkew=TimeSpan.Zero,
-
-
-				};
-
-			});
+		
 			//fluentvalidation konfigürayonu
 			services.AddControllersWithViews().AddFluentValidation();
 		}

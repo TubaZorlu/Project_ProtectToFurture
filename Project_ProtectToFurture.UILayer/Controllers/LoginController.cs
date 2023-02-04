@@ -67,7 +67,7 @@ namespace Project_ProtectToFurture.UILayer.Controllers
 
 
 
-			ModelState.AddModelError("", "Kullanıcı adı veya şifreniz hatalı");
+			
 			return View(model);
 		}
 

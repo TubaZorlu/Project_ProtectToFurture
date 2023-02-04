@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project_ProtectToFurture.API.Hubs;
 using Project_ProtectToFurture.DataAccessLayer.Context;
@@ -25,12 +26,14 @@ namespace Project_ProtectToFurture.API.Controllers
 		[HttpPost]
 		public async Task<IActionResult> SaveCampaign(Signature signature)
 		{
-			await _signatureService.SaveData(signature);
-			
+			await _signatureService.SaveData(signature);		
 			return Ok(_signatureService.GetSignatureChart());
+
 		}
 
 
+
+		[Authorize]
 		[HttpGet]
 		public IActionResult SendDataToDatabase()
 		{
@@ -70,6 +73,8 @@ namespace Project_ProtectToFurture.API.Controllers
 			return Ok("Kampanya imza verileri veri tabanına kaydedildi");
 		}
 
+
+		
 	}
 
 }

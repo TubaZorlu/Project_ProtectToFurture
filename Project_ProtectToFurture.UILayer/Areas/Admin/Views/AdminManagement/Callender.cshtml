@@ -16,14 +16,17 @@
 
 		document.addEventListener('DOMContentLoaded', function () {
 			var calendarEl = document.getElementById('calendar');
-
+			debugger;
+			var date = new Date().toUTCString();
 			var calendar = new FullCalendar.Calendar(calendarEl, {
 				headerToolbar: {
 					left: 'prev,next today',
 					center: 'title',
 					right: 'dayGridMonth,timeGridWeek,timeGridDay'
 				},
-				initialDate: '2023-01-12',
+				
+				
+				initialDate: '2023-02-12',
 				locale: "tr",
 				themeSystem: "bootstrap",
 
@@ -34,17 +37,19 @@
 			
 
 				select: function (arg) {
-					debugger;
+					
 
 					var title1 = prompt('Başlık:');
 					var date1 = prompt('Başlangıç Tarihi:');
 					var date2 = prompt('Bitiş Tarihi:');
 
+					arg.start=date1;
+					arg.end=date2;
 
 					if (title1) {
 
 						calendar.addEvent({
-
+						
 
 							title: title1,
 							start: arg.start,
