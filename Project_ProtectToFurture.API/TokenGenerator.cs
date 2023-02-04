@@ -9,6 +9,7 @@ namespace Project_ProtectToFurture.API
 	{
 		public string GeneretaToken()
 		{
+
 			SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Zorluzorluzorlu1."));
 			SigningCredentials credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
