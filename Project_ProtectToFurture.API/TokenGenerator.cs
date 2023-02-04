@@ -10,13 +10,15 @@ namespace Project_ProtectToFurture.API
 		public string GeneretaToken()
 		{
 
-			SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Zorluzorluzorlu1."));
-			SigningCredentials credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+			//SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Zorluzorluzorlu1."));
+			//SigningCredentials credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-			JwtSecurityToken token = new JwtSecurityToken(issuer: "http://localhost", audience: "http://localhost", notBefore: System.DateTime.Now, expires: DateTime.Now.AddMinutes(5), signingCredentials: credentials);
+			//JwtSecurityToken token = new JwtSecurityToken(issuer: "http://localhost", audience: "http://localhost", notBefore: System.DateTime.Now, expires: DateTime.Now.AddMinutes(5), signingCredentials: credentials);
 
-			JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
-			return handler.WriteToken(token);
+			//JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
+			//return handler.WriteToken(token);
+
+			return string.Empty;
 		}
 	}
 }
